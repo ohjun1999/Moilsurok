@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_marginTop="20dp"
+    android:background="@color/white"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/noteImage"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:src="@color/backGray"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/noteYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00기"
+        android:fontFamily="@font/notosanskrregular"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@id/noteImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/noteName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ㅇㅇㅇ"
+        android:fontFamily="@font/notosanskrmedium"
+        android:textColor="@color/black"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/noteYear"
+        app:layout_constraintStart_toEndOf="@id/noteYear"
+        app:layout_constraintTop_toTopOf="@id/noteYear" />
+
+    <ImageView
+        android:id="@+id/phoneImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_local_phone_24"
+        app:layout_constraintStart_toStartOf="@id/noteYear"
+        app:layout_constraintTop_toBottomOf="@id/noteYear"
+        app:tint="@color/moilGreen" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="000-0000-0000"
+        app:layout_constraintBottom_toBottomOf="@id/phoneImage"
+        app:layout_constraintStart_toEndOf="@id/phoneImage"
+        app:layout_constraintTop_toTopOf="@id/phoneImage" />
+
+    <ImageView
+        android:id="@+id/mailImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_mail_outline_24"
+        app:layout_constraintStart_toStartOf="@id/noteYear"
+        app:layout_constraintTop_toBottomOf="@id/phoneImage"
+        app:tint="@color/moilGreen" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="djsgjsdkj123@gmail.com"
+        app:layout_constraintBottom_toBottomOf="@id/mailImage"
+        app:layout_constraintStart_toEndOf="@id/mailImage"
+        app:layout_constraintTop_toTopOf="@id/mailImage" />
+
+    <ImageView
+        android:id="@+id/companyImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_shopping_bag_24"
+        app:layout_constraintStart_toStartOf="@id/noteYear"
+        app:layout_constraintTop_toBottomOf="@id/mailImage"
+        app:tint="@color/moilGreen" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Link"
+        app:layout_constraintBottom_toBottomOf="@+id/companyImage"
+        app:layout_constraintStart_toEndOf="@+id/companyImage"
+        app:layout_constraintTop_toTopOf="@+id/companyImage" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
