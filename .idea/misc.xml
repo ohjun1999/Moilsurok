@@ -3,12 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/drawable/green_line_radius_10dp.xml" value="0.2635" />
+        <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/drawable/line_radius_3dp.xml" value="0.2635" />
+        <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/layout/activity_alarm.xml" value="0.536" />
         <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/layout/activity_date.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/layout/activity_main.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/layout/activity_note.xml" value="0.264" />
         <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/layout/activity_note_profile_ghange.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/layout/activity_notice.xml" value="0.4" />
         <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/layout/fragment_note_search.xml" value="0.25263157894736843" />
-        <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/layout/item_note.xml" value="0.536" />
+        <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/layout/item_alarm.xml" value="1.6" />
+        <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/layout/item_note.xml" value="0.264" />
+        <entry key="..\:/Users/ohjun/AndroidStudioProjects/Moilsurok/app/src/main/res/layout/item_notice.xml" value="0.264" />
       </map>
     </option>
   </component>

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backGray">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:id="@+id/top_bar"
@@ -30,16 +29,14 @@
             android:layout_weight="1"
             android:fontFamily="@font/notosanskrmedium"
             android:gravity="center"
-            android:text="동문수첩"
+            android:text="알림"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
         <ImageButton
             android:layout_width="20dp"
             android:layout_height="match_parent"
-            android:background="@color/white"
-            android:src="@drawable/ic_group"
-            app:tint="@color/moilGreen" />
+            android:background="@color/white" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -49,6 +46,6 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintTop_toBottomOf="@id/top_bar"
-        tools:listitem="@layout/item_note" />
+        tools:listitem="@layout/item_alarm" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
