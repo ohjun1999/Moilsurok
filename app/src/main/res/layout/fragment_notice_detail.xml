@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backGray">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:padding="16dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textAlarm"
+            android:layout_width="47dp"
+            android:layout_height="20dp"
+            android:background="@drawable/green_line_radius_10dp"
+            android:drawableStart="@drawable/ic_notice"
+            android:gravity="center"
+            android:paddingStart="6dp"
+            android:paddingEnd="9dp"
+            android:text="공지"
+            android:textColor="@color/moilGreen"
+            android:textSize="9sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/registrationDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="2022.04.25"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/textAlarm"
+            app:layout_constraintStart_toEndOf="@id/textAlarm"
+            app:layout_constraintTop_toTopOf="@id/textAlarm" />
+
+
+        <TextView
+            android:id="@+id/whatAlarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="모일수록 앱 사용법 공지합니다. 필독해주세요"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/textAlarm"
+            app:layout_constraintTop_toBottomOf="@id/textAlarm" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        
+        <TextView
+            android:id="@+id/noticeText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="13dp"
+            app:layout_constraintBottom_toTopOf="@id/selectUpDown"
+            app:layout_constraintTop_toBottomOf="@id/title"/>
+
+    <LinearLayout
+        android:id="@+id/selectUpDown"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:padding="9dp"
+            android:layout_marginBottom="0.5dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/ic_arrow_up_green"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginStart="9dp"
+                android:text="다음글"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_marginStart="12dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:padding="9dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/ic_arrow_down_green"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginStart="9dp"
+                android:text=" 이전글"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_marginStart="12dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+        
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
