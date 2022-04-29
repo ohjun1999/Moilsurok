@@ -9,4 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="moilGreen">#29AB87</color>
     <color name="backGray">#E5E5E5</color>
+    <color name="modifyGreen">#4D29AB87</color>
+    <color name="modifyBlue">#4D295DAB</color>
+    <color name="modifyRed">#4DAB2929</color>
+    <color name="modifyPurple">#4D8929AB</color>
+    <color name="modifyYellow">#4DA8AB29</color>
+    <color name="selectDateGreen">#6629AB87</color>
 </resources>
