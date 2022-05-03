@@ -91,11 +91,15 @@
                 android:padding="6dp"
                 android:src="@drawable/ic_person" />
 
-            <TextView
+            <EditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="42dp"
                 android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="23dp"
+                android:textSize="13sp"
+                android:background="@drawable/profile_modify_back"
                 android:gravity="center_vertical"
                 android:text="2000.04.25"
                 android:textColor="@color/black" />
@@ -116,11 +120,15 @@
                 android:padding="6dp"
                 android:src="@drawable/ic_home" />
 
-            <TextView
+            <EditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="42dp"
                 android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="23dp"
+                android:textSize="13sp"
+                android:background="@drawable/profile_modify_back"
                 android:gravity="center_vertical"
                 android:text="경기도 수원시 권선구"
                 android:textColor="@color/black" />
@@ -141,11 +149,15 @@
                 android:padding="6dp"
                 android:src="@drawable/ic_phone_gray" />
 
-            <TextView
+            <EditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="42dp"
                 android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="23dp"
+                android:textSize="13sp"
+                android:background="@drawable/profile_modify_back"
                 android:gravity="center_vertical"
                 android:text="010-5745-1727"
                 android:textColor="@color/black" />
@@ -166,11 +178,17 @@
                 android:padding="6dp"
                 android:src="@drawable/ic_mail_gray" />
 
-            <TextView
+            <EditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="42dp"
                 android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="23dp"
+                android:textSize="13sp"
+                android:singleLine="true"
+                android:scrollHorizontally="true"
+                android:background="@drawable/profile_modify_back"
                 android:gravity="center_vertical"
                 android:text="wonbinchoi0425@gmail.com"
                 android:textColor="@color/black" />
@@ -191,11 +209,15 @@
                 android:padding="6dp"
                 android:src="@drawable/ic_info" />
 
-            <TextView
+            <EditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="42dp"
                 android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="23dp"
+                android:textSize="13sp"
+                android:background="@drawable/profile_modify_back"
                 android:gravity="center_vertical"
                 android:textColor="@color/black" />
 
@@ -219,9 +241,10 @@
 
             <TextView
                 android:layout_width="26dp"
-                android:layout_height="17dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="26dp"
                 android:text="직장"
+                android:gravity="center"
                 android:textColor="@color/black" />
 
             <TextView
@@ -229,6 +252,11 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="40dp"
                 android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="23dp"
+                android:textSize="13sp"
+                android:gravity="center_vertical"
+                android:background="@drawable/profile_modify_back"
                 android:text="LINK"
                 android:textColor="@color/black" />
 
@@ -240,9 +268,10 @@
 
             <TextView
                 android:layout_width="26dp"
-                android:layout_height="17dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="26dp"
                 android:text="부서"
+                android:gravity="center"
                 android:textColor="@color/black" />
 
             <TextView
@@ -250,6 +279,11 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="40dp"
                 android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="23dp"
+                android:textSize="13sp"
+                android:gravity="center_vertical"
+                android:background="@drawable/profile_modify_back"
                 android:text="제품개발부서(디자인)"
                 android:textColor="@color/black" />
 
@@ -262,9 +296,10 @@
 
             <TextView
                 android:layout_width="26dp"
-                android:layout_height="17dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="26dp"
                 android:text="직급"
+                android:gravity="center"
                 android:textColor="@color/black" />
 
             <TextView
@@ -273,6 +308,11 @@
                 android:layout_marginStart="40dp"
                 android:layout_weight="1"
                 android:text="팀장"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="23dp"
+                android:textSize="13sp"
+                android:gravity="center_vertical"
+                android:background="@drawable/profile_modify_back"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -284,7 +324,7 @@
 
             <ImageView
                 android:layout_width="17dp"
-                android:layout_height="17dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="30dp"
                 android:src="@drawable/ic_www"
                 android:textColor="@color/black" />
@@ -295,7 +335,11 @@
                 android:layout_marginStart="45dp"
                 android:text="https://www.hanaw.com/"
                 android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="23dp"
+                android:textSize="13sp"
                 android:gravity="center_vertical"
+                android:background="@drawable/profile_modify_back"
                 android:textColor="@color/black" />
 
         </LinearLayout>
