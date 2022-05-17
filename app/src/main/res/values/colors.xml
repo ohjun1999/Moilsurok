@@ -6,13 +6,19 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="textColor">#FF666666</color>
     <color name="white">#FFFFFFFF</color>
     <color name="moilGreen">#29AB87</color>
-    <color name="backGray">#E5E5E5</color>
+    <color name="backGray">#FFE5E5E5</color>
     <color name="modifyGreen">#4D29AB87</color>
     <color name="modifyBlue">#4D295DAB</color>
     <color name="modifyRed">#4DAB2929</color>
     <color name="modifyPurple">#4D8929AB</color>
     <color name="modifyYellow">#4DA8AB29</color>
     <color name="selectDateGreen">#6629AB87</color>
+    <color name="backWeakGray">#F2F2F2</color>
+    <color name="dateRed">#EC0808</color>
+    <color name="dateBlue">#0019FE</color>
+    <color name="dateBlack">#191919</color>
+    <color name="selectDate">#6629AB87</color>
 </resources>
