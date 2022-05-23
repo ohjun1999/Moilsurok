@@ -1,15 +1,11 @@
 package com.example.moilsurok
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
+import android.os.Bundle
 
-
-
-
-class NoteActivity : AppCompatActivity() {
+class ManageAuthenticationMethodsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_note)
+        setContentView(R.layout.activity_manage_authentication_methods)
     }
 }

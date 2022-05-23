@@ -27,6 +27,10 @@
         <activity android:name=".NoteProfileChangeActivity"/>
         <activity android:name=".NoticeActivity"/>
         <activity android:name=".ProfileModifyActivity"/>
+        <activity android:name=".ManageAuthenticationMethodsActivity"/>
+        <activity android:name=".InquiryActivity"/>
+        <activity android:name=".AssociationInquiryActivity"/>
+        <activity android:name=".TermsActivity"/>
     </application>
 
 </manifest>

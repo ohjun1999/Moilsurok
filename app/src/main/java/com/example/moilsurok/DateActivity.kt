@@ -2,8 +2,6 @@ package com.example.moilsurok
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.prolificinteractive.materialcalendarview.CalendarDay
-import com.prolificinteractive.materialcalendarview.CalendarMode
 import java.util.*
 
 var startTimeCalendar = Calendar.getInstance()
