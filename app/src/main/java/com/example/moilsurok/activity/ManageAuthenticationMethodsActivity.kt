@@ -1,7 +1,8 @@
-package com.example.moilsurok
+package com.example.moilsurok.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.moilsurok.R
 
 class ManageAuthenticationMethodsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

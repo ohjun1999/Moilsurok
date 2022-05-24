@@ -1,7 +1,8 @@
-package com.example.moilsurok
+package com.example.moilsurok.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.moilsurok.R
 import java.util.*
 
 var startTimeCalendar = Calendar.getInstance()

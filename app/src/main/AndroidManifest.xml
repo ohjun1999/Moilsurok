@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Moilsurok">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,19 +18,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DateActivity"/>
-        <activity android:name=".ExtraActivity"/>
-        <activity android:name=".AlarmActivity"/>
-        <activity android:name=".DateDetailActivity"/>
-        <activity android:name=".ExplainGroupActivity"/>
-        <activity android:name=".NoteActivity"/>
-        <activity android:name=".NoteProfileChangeActivity"/>
-        <activity android:name=".NoticeActivity"/>
-        <activity android:name=".ProfileModifyActivity"/>
-        <activity android:name=".ManageAuthenticationMethodsActivity"/>
-        <activity android:name=".InquiryActivity"/>
-        <activity android:name=".AssociationInquiryActivity"/>
-        <activity android:name=".TermsActivity"/>
+        <activity android:name=".activity.DateActivity"/>
+        <activity android:name=".activity.ExtraActivity"/>
+        <activity android:name=".activity.AlarmActivity"/>
+        <activity android:name=".activity.DateDetailActivity"/>
+        <activity android:name=".activity.ExplainGroupActivity"/>
+        <activity android:name=".activity.NoteActivity"/>
+        <activity android:name=".activity.NoteProfileChangeActivity"/>
+        <activity android:name=".activity.NoticeActivity"/>
+        <activity android:name=".activity.ProfileModifyActivity"/>
+        <activity android:name=".activity.ManageAuthenticationMethodsActivity"/>
+        <activity android:name=".activity.InquiryActivity"/>
+        <activity android:name=".activity.AssociationInquiryActivity"/>
+        <activity android:name=".activity.TermsActivity"/>
     </application>
 
 </manifest>

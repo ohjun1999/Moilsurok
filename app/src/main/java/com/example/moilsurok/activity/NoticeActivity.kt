@@ -1,11 +1,12 @@
-package com.example.moilsurok
+package com.example.moilsurok.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.moilsurok.R
 
-class ExplainGroupActivity : AppCompatActivity() {
+class NoticeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_explain_group)
+        setContentView(R.layout.activity_notice)
     }
 }

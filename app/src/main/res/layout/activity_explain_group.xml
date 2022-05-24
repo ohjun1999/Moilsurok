@@ -40,72 +40,101 @@
     </LinearLayout>
 
 
-    <TableLayout
+    <RadioGroup
+        android:id="@+id/radioGroup1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintHeight_percent="0.05"
         app:layout_constraintTop_toBottomOf="@id/top_bar">
 
-        <TableRow>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@color/moilGreen"
-                android:text="그룹명이란?"
-                android:textColor="@color/white" />
+        <RadioButton
+            android:id="@+id/radioBtn1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_radio_button"
+            android:button="@null"
+            android:gravity="center"
+            android:text="그룹명이란?"
+            android:textColor="@drawable/selector_radio_text" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:text="조직도" />
+        <RadioButton
+            android:id="@+id/radioBtn2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_radio_button"
+            android:button="@null"
+            android:gravity="center"
+            android:text="조직도"
+            android:textColor="@drawable/selector_radio_text" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:text="연혁" />
-
-
-        </TableRow>
-
-        <TableRow>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:text="회칙" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:text="안내"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:text="행사앨범" />
+        <RadioButton
+            android:id="@+id/radioBtn3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_radio_button"
+            android:button="@null"
+            android:gravity="center"
+            android:text="연혁"
+            android:textColor="@drawable/selector_radio_text" />
 
 
-        </TableRow>
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup1">
+
+        <RadioButton
+            android:id="@+id/radioBtn4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_radio_button"
+            android:button="@null"
+            android:gravity="center"
+            android:text="회칙"
+            android:textColor="@drawable/selector_radio_text" />
+
+        <RadioButton
+            android:id="@+id/radioBtn5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_radio_button"
+            android:button="@null"
+            android:gravity="center"
+            android:text="행사앨범"
+            android:textColor="@drawable/selector_radio_text" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center" />
 
 
-    </TableLayout>
+    </RadioGroup>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/frameLayout"
+        android:name="com.example.moilsurok.fragment.GroupOneFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
