@@ -3,10 +3,23 @@ package com.example.moilsurok.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.moilsurok.R
+import com.example.moilsurok.databinding.ActivityManageAuthenticationMethodsBinding
+import com.example.moilsurok.databinding.ActivityNoteBinding
 
 class ManageAuthenticationMethodsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityManageAuthenticationMethodsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_manage_authentication_methods)
+        // binding class 인스턴스 생성
+        binding = ActivityManageAuthenticationMethodsBinding.inflate(layoutInflater)
+        // binding class의 root를 참조하여 view로
+        val view = binding.root
+        setContentView(view)
+
+        binding.backKey.setOnClickListener {
+            finish()
+        }
+
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -44,6 +45,16 @@ public class ExplainGroupActivity extends AppCompatActivity implements OnClickLi
         RadioButton btn3 = findViewById(R.id.radioBtn3);
         RadioButton btn4 = findViewById(R.id.radioBtn4);
         RadioButton btn5 = findViewById(R.id.radioBtn5);
+
+        ImageButton backKey = findViewById(R.id.backKey);
+
+        backKey.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view)
+            {
+                finish();
+            }
+        });
 
         btn1.setChecked(true);
 

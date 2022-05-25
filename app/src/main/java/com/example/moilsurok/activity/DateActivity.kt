@@ -1,27 +1,27 @@
 package com.example.moilsurok.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.moilsurok.R
+import com.example.moilsurok.databinding.ActivityAssociationInquiryBinding
+import com.example.moilsurok.databinding.ActivityDateBinding
 import java.util.*
 
-var startTimeCalendar = Calendar.getInstance()
-var endTimeCalendar = Calendar.getInstance()
-
-val currentYear = startTimeCalendar.get(Calendar.YEAR)
-val currentMonth = startTimeCalendar.get(Calendar.MONTH)
-val currentDate = startTimeCalendar.get(Calendar.DATE)
 
 class DateActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDateBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_date)
+        // binding class 인스턴스 생성
+        binding = ActivityDateBinding.inflate(layoutInflater)
+        // binding class의 root를 참조하여 view로
+        val view = binding.root
+        setContentView(view)
 
-
-        endTimeCalendar.set(Calendar.MONTH, currentMonth + 3)
-
-
+        binding.backKey.setOnClickListener {
+            finish()
+        }
     }
-
-
 }
