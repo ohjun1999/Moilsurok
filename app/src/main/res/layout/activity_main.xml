@@ -1,183 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="640"
     tools:context=".activity.MainActivity">
 
-    <androidx.core.widget.NestedScrollView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="0dp"
+        android:layout_weight="217">
+
+        <ImageView
+            android:id="@+id/topImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="40dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/top_back_moil_green" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:id="@+id/mainInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_back_info_vector"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/topImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topImage">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:background="@drawable/ic_top_green_back"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/__5"
+                app:layout_constraintStart_toStartOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/mainInfo"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="145dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/ic_back_info_vector"
-                android:elevation="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+            <LinearLayout
+                android:id="@+id/belong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/logo"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
-                    android:src="@drawable/__5"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <LinearLayout
-                    android:id="@+id/belong"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/logo"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:text="LINK"
+                    android:textColor="@color/black" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="LINK"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="20기 최원빈"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/goAlarm"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:background="@color/white"
-                    android:src="@drawable/ic_go_alarm"
-                    app:layout_constraintBottom_toBottomOf="@id/goExtra"
-                    app:layout_constraintEnd_toStartOf="@id/goExtra"
-                    app:layout_constraintTop_toTopOf="@id/goExtra" />
+                    android:text="20기 최원빈"
+                    android:textColor="@color/black" />
+            </LinearLayout>
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/goExtra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:background="@color/white"
-                    android:src="@drawable/ic_go_extra"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/goNote"
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/goAlarm"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/white"
+                android:src="@drawable/ic_go_alarm"
+                app:layout_constraintBottom_toBottomOf="@id/goExtra"
+                app:layout_constraintEnd_toStartOf="@id/goExtra"
+                app:layout_constraintTop_toTopOf="@id/goExtra" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/goExtra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/ic_go_note"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@id/firstLinear"
+                android:background="@color/white"
+                android:src="@drawable/ic_go_extra"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/mainInfo" />
-
-            <LinearLayout
-                android:id="@+id/firstLinear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:adjustViewBounds="true"
-                android:gravity="center"
-                android:layout_marginTop="14dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@id/secondLinear"
-                app:layout_constraintTop_toBottomOf="@id/goNote">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/goDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/ic_go_date" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/goNotice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/ic_go_notice" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/secondLinear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:adjustViewBounds="true"
-                android:gravity="center"
-                android:layout_marginTop="14dp"
-                app:layout_constraintBottom_toTopOf="@id/banner"
-                app:layout_constraintTop_toBottomOf="@id/firstLinear">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/goExplain"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/ic_go_explain" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/goMall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/ic_go_mall" />
-            </LinearLayout>
-
-
-            <ImageView
-                android:id="@+id/banner"
-                android:layout_width="match_parent"
-                android:layout_height="134dp"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="19" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="237"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/banner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainInfo">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/goNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_go_note"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/firstLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:adjustViewBounds="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/secondLinear"
+            app:layout_constraintTop_toBottomOf="@id/goNote">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/goDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@drawable/ic_go_date" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/goNotice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@drawable/ic_go_notice" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/secondLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:adjustViewBounds="true"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/banner"
+            app:layout_constraintTop_toBottomOf="@id/firstLinear">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/goExplain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@drawable/ic_go_explain" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/goMall"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@drawable/ic_go_mall" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="16" />
+
+
+    <ImageView
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="134"
+        android:background="@color/backWeakGray"
+        app:layout_constraintBottom_toBottomOf="parent" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="17" />
+
+
+</LinearLayout>
