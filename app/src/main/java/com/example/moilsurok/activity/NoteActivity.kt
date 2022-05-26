@@ -2,6 +2,7 @@ package com.example.moilsurok.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.OneShotPreDrawListener.add
 import com.example.moilsurok.NoteAdapter
@@ -29,6 +30,16 @@ class NoteActivity : AppCompatActivity() {
 
         binding.backKey.setOnClickListener {
             finish()
+        }
+
+        binding.menuBtn.setOnClickListener {
+            binding.search.visibility = View.VISIBLE
+            binding.menuBtn2.visibility = View.VISIBLE
+        }
+
+        binding.menuBtn2.setOnClickListener {
+            binding.search.visibility = View.GONE
+            binding.menuBtn2.visibility = View.GONE
         }
 //
 //        fun initRecycler() {
