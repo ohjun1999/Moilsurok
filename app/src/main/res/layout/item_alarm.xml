@@ -1,51 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="65dp"
-    android:elevation="5dp"
     android:layout_marginTop="20dp"
     android:background="@drawable/line_radius_3dp"
+    android:elevation="5dp"
+    android:orientation="vertical"
     android:padding="8dp">
 
-    <TextView
-        android:id="@+id/textAlarm"
-        android:layout_width="47dp"
-        android:layout_height="20dp"
-        android:background="@drawable/green_line_radius_10dp"
-        android:gravity="center"
-        android:text="알림"
-        android:paddingStart="7dp"
-        android:paddingEnd="9dp"
-        android:drawableStart="@drawable/ic_alarm"
-        android:textColor="@color/moilGreen"
-        android:textSize="9sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-          />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/registrationDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="2022.04.25"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/textAlarm"
-        app:layout_constraintStart_toEndOf="@id/textAlarm"
-        app:layout_constraintTop_toTopOf="@id/textAlarm" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/whatAlarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="새로운 공지가 등록 되었습니다."
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/textAlarm"
-        app:layout_constraintTop_toBottomOf="@id/textAlarm" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/textAlarm"
+                    android:layout_width="47dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_alram_img" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/registrationDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="2022.04.25"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/whatAlarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="새로운 공지가 등록 되었습니다."
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -21,4 +21,5 @@
     <color name="dateBlue">#0019FE</color>
     <color name="dateBlack">#191919</color>
     <color name="selectDate">#6629AB87</color>
+    <color name="btnGray">#96979A</color>
 </resources>

@@ -9,18 +9,11 @@
     android:background="@drawable/line_radius_3dp"
     android:padding="8dp">
 
-    <TextView
-        android:id="@+id/textAlarm"
+    <ImageView
+        android:id="@+id/textNotice"
         android:layout_width="47dp"
         android:layout_height="20dp"
-        android:background="@drawable/green_line_radius_10dp"
-        android:gravity="center"
-        android:text="공지"
-        android:paddingStart="6dp"
-        android:paddingEnd="9dp"
-        android:drawableStart="@drawable/ic_notice"
-        android:textColor="@color/moilGreen"
-        android:textSize="9sp"
+        android:src="@drawable/ic_notice_img"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -32,20 +25,20 @@
         android:layout_marginStart="10dp"
         android:text="2022.04.25"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/textAlarm"
-        app:layout_constraintStart_toEndOf="@id/textAlarm"
-        app:layout_constraintTop_toTopOf="@id/textAlarm" />
+        app:layout_constraintBottom_toBottomOf="@+id/textNotice"
+        app:layout_constraintStart_toEndOf="@+id/textNotice"
+        app:layout_constraintTop_toTopOf="@+id/textNotice" />
 
 
     <TextView
-        android:id="@+id/whatAlarm"
+        android:id="@+id/whatNotice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="모일수록 앱 사용법 공지합니다. 필독해주세요"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/textAlarm"
-        app:layout_constraintTop_toBottomOf="@id/textAlarm" />
+        app:layout_constraintStart_toStartOf="@+id/textNotice"
+        app:layout_constraintTop_toBottomOf="@+id/textNotice"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

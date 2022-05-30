@@ -2,6 +2,7 @@ package com.example.moilsurok.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.moilsurok.R
 import com.example.moilsurok.databinding.ActivityNoteBinding
 import com.example.moilsurok.databinding.ActivityNoteProfileChangeBinding
@@ -19,6 +20,13 @@ class NoteProfileChangeActivity : AppCompatActivity() {
 
         binding.backKey.setOnClickListener {
             finish()
+        }
+        binding.request.setOnClickListener {
+            binding.request.visibility = View.GONE
+        }
+
+        binding.cancellationRequest.setOnClickListener {
+            binding.request.visibility = View.VISIBLE
         }
 
     }
