@@ -53,9 +53,18 @@ class NoteActivity : AppCompatActivity() {
         }
 
 
+
+
+
+
     }
 
 }
+
+
+class checkboxData(
+    var id: Long,
+    var checked: Boolean)
 
 class Note(
     val name: String,
@@ -66,9 +75,11 @@ class Note(
 )
 
 class NoteAdapter(
+
     var noteList: MutableList<Note>,
     var inflater: LayoutInflater
 ) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+
 
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -104,6 +115,7 @@ class NoteAdapter(
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
 
     }
+
 
 
 }

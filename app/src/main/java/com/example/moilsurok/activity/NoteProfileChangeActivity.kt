@@ -23,10 +23,12 @@ class NoteProfileChangeActivity : AppCompatActivity() {
         }
         binding.request.setOnClickListener {
             binding.request.visibility = View.GONE
+            binding.cancellationRequest.visibility = View.VISIBLE
         }
 
         binding.cancellationRequest.setOnClickListener {
             binding.request.visibility = View.VISIBLE
+            binding.cancellationRequest.visibility = View.GONE
         }
 
     }

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moilsurok.R
 import com.example.moilsurok.databinding.ActivityAlarmBinding
-import com.example.moilsurok.databinding.ActivityExtraBinding
 
 class AlarmActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlarmBinding

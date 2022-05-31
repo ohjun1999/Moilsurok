@@ -46,6 +46,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_association_inquiry"
         app:layout_constraintTop_toBottomOf="@id/top_bar" />
 
     <androidx.appcompat.widget.AppCompatButton

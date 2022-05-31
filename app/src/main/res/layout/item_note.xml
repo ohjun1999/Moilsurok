@@ -162,12 +162,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="47" />
 
-            <ImageButton
+            <CheckBox
+                android:id="@+id/bookmark"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_weight="20"
-                android:background="@color/white"
-                android:src="@drawable/ic_bookmark" />
+                android:background="@drawable/select_btn"
+                android:button="@null" />
 
             <View
                 android:layout_width="0dp"

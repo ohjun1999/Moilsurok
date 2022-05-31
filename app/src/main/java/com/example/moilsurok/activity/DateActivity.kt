@@ -23,5 +23,6 @@ class DateActivity : AppCompatActivity() {
         binding.backKey.setOnClickListener {
             finish()
         }
+        binding.calendarView
     }
 }
