@@ -19,7 +19,7 @@ class ExtraActivity : AppCompatActivity() {
 
         // 접근 가능
         binding.goAlarmSetting.setOnClickListener {
-            val intent = Intent(this, AlarmActivity::class.java)
+            val intent = Intent(this, AlarmSettingActivity::class.java)
             startActivity(intent)
 
         }

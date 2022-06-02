@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
@@ -30,7 +31,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/notosanskrmedium"
             android:gravity="center"
-            android:text="동문회 관련 문의"
+            android:text="이용문의"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -40,18 +41,45 @@
             android:background="@color/white" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+
+    <LinearLayout
+        android:padding="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        tools:itemCount="2"
-        tools:listitem="@layout/item_association_inquiry"
-        app:layout_constraintTop_toBottomOf="@id/top_bar" />
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:weightSum="524"
+        android:layout_height="0dp">
+
+        <EditText
+            android:padding="12dp"
+            android:background="@drawable/back_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="일정보기 오류 문의합니다."
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="20"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="312"
+            android:padding="12dp"
+            android:background="@drawable/back_text"
+            android:gravity="top"
+            android:text="저는 LINK의 원빈 초이이빈다.\n하늘능 날을 뮝해 라고싶은마링 망ㄴ흥ㄴ데\n사랑하는 이릉 ㅜ미한 다느이"/>
+
+
+
+
+    </LinearLayout>
+
+
+
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/goInquiryPage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="문의하기"
@@ -62,4 +90,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:textColor="@color/white"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

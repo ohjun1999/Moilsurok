@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backWeakGray">
+
+    <!-- 반응형 다시 맞추어보기-->
+
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="40dp"
+        android:orientation="horizontal"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <ImageButton
+            android:id="@+id/backKey"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+            app:tint="@color/moilGreen" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/notosanskrmedium"
+            android:gravity="center"
+            android:text="알림설정"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="67"/>
+
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:background="@color/white"
+      android:orientation="horizontal"
+      android:layout_weight="10"
+      android:layout_height="44dp"
+      android:padding="16dp">
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="PUSH 알림 권한 설정"
+          android:textColor="@color/black"
+          android:textSize="20sp"
+          android:layout_weight="1"
+          android:layout_gravity="center_vertical"/>
+
+      <androidx.appcompat.widget.AppCompatImageButton
+          android:id="@+id/switchBtn"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:background="@color/white"
+          android:src="@drawable/ic_toggle_btn2"/>
+
+
+  </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="483"/>
+
+
+
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

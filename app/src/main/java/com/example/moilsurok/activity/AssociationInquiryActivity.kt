@@ -21,5 +21,9 @@ class AssociationInquiryActivity : AppCompatActivity() {
         binding.backKey.setOnClickListener {
             finish()
         }
+        binding.goInquiryPage.setOnClickListener {
+            val intent = Intent(this, AssociationInquiryTextActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

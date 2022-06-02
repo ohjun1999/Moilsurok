@@ -31,6 +31,11 @@
         <activity android:name=".activity.InquiryActivity"/>
         <activity android:name=".activity.AssociationInquiryActivity"/>
         <activity android:name=".activity.TermsActivity"/>
+        <activity android:name=".activity.AssociationInquiryTextActivity"/>
+        <activity android:name=".activity.InquiryTextActivity"/>
+        <activity android:name=".activity.AssociationInquiryContextActivity"/>
+        <activity android:name=".activity.InquiryContextActivity"/>
+        <activity android:name=".activity.AlarmSettingActivity"/>
     </application>
 
 </manifest>

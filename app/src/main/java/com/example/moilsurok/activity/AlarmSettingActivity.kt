@@ -4,15 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.moilsurok.R
-import com.example.moilsurok.databinding.ActivityInquiryBinding
+import com.example.moilsurok.databinding.ActivityAlarmSettingBinding
 
-class InquiryActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityInquiryBinding
+class AlarmSettingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAlarmSettingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // binding class 인스턴스 생성
-        binding = ActivityInquiryBinding.inflate(layoutInflater)
+        binding = ActivityAlarmSettingBinding.inflate(layoutInflater)
         // binding class의 root를 참조하여 view로
         val view = binding.root
         setContentView(view)
@@ -20,9 +20,8 @@ class InquiryActivity : AppCompatActivity() {
         binding.backKey.setOnClickListener {
             finish()
         }
-        binding.goRealInquiry.setOnClickListener {
-            val intent = Intent(this,InquiryTextActivity::class.java)
-            startActivity(intent)
+        binding.switchBtn.setOnClickListener { _, ->
+
         }
     }
 }
