@@ -20,8 +20,6 @@ class AlarmSettingActivity : AppCompatActivity() {
         binding.backKey.setOnClickListener {
             finish()
         }
-        binding.switchBtn.setOnClickListener { _, ->
 
-        }
     }
 }

@@ -2,6 +2,7 @@
 
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -58,7 +59,7 @@
       android:padding="16dp">
 
       <TextView
-          android:layout_width="wrap_content"
+          android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:text="PUSH 알림 권한 설정"
           android:textColor="@color/black"
@@ -66,13 +67,7 @@
           android:layout_weight="1"
           android:layout_gravity="center_vertical"/>
 
-      <androidx.appcompat.widget.AppCompatImageButton
-          android:id="@+id/switchBtn"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:background="@color/white"
-          android:src="@drawable/ic_toggle_btn2"/>
+
 
 
   </LinearLayout>
