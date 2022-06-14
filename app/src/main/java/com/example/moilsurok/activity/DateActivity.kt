@@ -34,5 +34,7 @@ class DateActivity : AppCompatActivity() {
         val snap = PagerSnapHelper()
         snap.attachToRecyclerView(binding.calendarView)
 
+
+
     }
 }

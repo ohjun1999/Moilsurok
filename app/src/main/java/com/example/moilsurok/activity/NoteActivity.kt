@@ -1,22 +1,20 @@
 package com.example.moilsurok.activity
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moilsurok.DataClassUser
 import com.example.moilsurok.ListViewModel
 import com.example.moilsurok.R
 import com.example.moilsurok.adapter.ListAdapter
 import com.example.moilsurok.databinding.ActivityNoteBinding
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+
 
 
 class NoteActivity : AppCompatActivity() {
@@ -24,6 +22,8 @@ class NoteActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var adapter:ListAdapter
     private val viewModel by lazy { ViewModelProvider(this).get(ListViewModel::class.java) }
+    var userList = arrayListOf<DataClassUser>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,25 +33,19 @@ class NoteActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        //OnCreate에서 database 객체를 초기화 해줬다.
-        database = FirebaseDatabase.getInstance().reference
+        val recyclerView : RecyclerView = findViewById(R.id.noteRecyclerView)
 
 
-        val noteList = mutableListOf<Note>()
-
-
-        val recyclerView = findViewById<RecyclerView>(R.id.noteRecyclerView)
-        //리사이클러뷰에 어답터 장착
-        recyclerView.adapter = NoteAdapter(noteList, LayoutInflater.from(this))
-        //리사이클러뷰에 레이아웃 매니저 장착
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        observerData()
+        adapter = ListAdapter(this, userList)
 
         for (i in 0..100) {
-            noteList.add(Note("" + "님", "" + "기", "-" + "-", "", ""))
+            userList.add(DataClassUser("" + "님", "" + "기", "", "",""))
             //어떻게 데이터 값을 받을 것인지
         }
-
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.adapter = adapter
+        observerData()
 
         binding.backKey.setOnClickListener {
             finish()
@@ -68,74 +62,11 @@ class NoteActivity : AppCompatActivity() {
         }
 
     }
+
     fun observerData(){
         viewModel.fetchData().observe(this, Observer {
             adapter.setListData(it)
             adapter.notifyDataSetChanged()
         })
     }
-
-
 }
-
-
-
-
-class checkboxData(
-    var id: Long,
-    var checked: Boolean
-)
-
-class Note(
-    val name: String,
-    val year: String,
-    val num: String,
-    val adress: String,
-    val info: String
-)
-
-class NoteAdapter(
-
-    var noteList: MutableList<Note>,
-    var inflater: LayoutInflater
-) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
-
-
-    class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        //아이템 뷰의 상세 뷰 컴포넌트를 홀드(id선택)한다.
-        val txtName: TextView
-        val txtYear: TextView
-        val noteImage: ImageView
-        val phoneNumber: TextView
-        val mailAdress: TextView
-        val companyInfo: TextView
-
-        init {
-            txtName = itemView.findViewById(R.id.noteName)
-            txtYear = itemView.findViewById(R.id.noteYear)
-            noteImage = itemView.findViewById(R.id.noteImage)
-            phoneNumber = itemView.findViewById(R.id.phoneNumber)
-            mailAdress = itemView.findViewById(R.id.mailAdress)
-            companyInfo = itemView.findViewById(R.id.companyInfo)
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        //아이템 뷰를 리턴
-        val view = inflater.inflate(R.layout.item_note, parent, false)
-        return NoteViewHolder(view)
-    }
-
-    override fun getItemCount(): Int {
-        //전체 데이터의 크기(갯수) 리턴
-        return noteList.size
-    }
-
-    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-
-    }
-
-
-}
-

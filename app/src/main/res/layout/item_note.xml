@@ -53,11 +53,13 @@
 
                     <TextView
                         android:id="@+id/noteYear"
+                        android:text="Year"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/noteName"
+                        android:text="Name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
@@ -86,6 +88,7 @@
 
                     <TextView
                         android:id="@+id/phoneNumber"
+                        android:text="PhoneNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="7dp"
@@ -116,6 +119,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="7dp"
+                        android:text="MailAdress"
                         android:autoSizeMaxTextSize="100sp"
                         android:autoSizeMinTextSize="10sp"
                         android:autoSizeTextType="uniform"
@@ -143,13 +147,16 @@
                         android:src="@drawable/ic_position" />
 
                     <TextView
-                        android:id="@+id/companyInfo"
+                        android:id="@+id/companyName"
+                        android:text="CompanyName"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="7dp"
                         android:gravity="center_vertical" />
 
                     <TextView
+                        android:id="@+id/companyInfo"
+                        android:text="CompanyInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="8dp"

@@ -1,18 +1,27 @@
 {
   "project_info": {
     "project_number": "135961523987",
+    "firebase_url": "https://moilsulok-default-rtdb.firebaseio.com",
     "project_id": "moilsulok",
     "storage_bucket": "moilsulok.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:135961523987:android:71363d8bc4c731223a8ce6",
+        "mobilesdk_app_id": "1:135961523987:android:37761a595be9ec133a8ce6",
         "android_client_info": {
           "package_name": "com.example.moilsurok"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "135961523987-07vrsefm86d42fpgqlpgec0jueg414j1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moilsurok",
+            "certificate_hash": "444e72af6023276f0e0fd667ba61ba6d1eef305a"
+          }
+        },
         {
           "client_id": "135961523987-4qqvtc6d76naipsj0br9qhsv2uiqo31l.apps.googleusercontent.com",
           "client_type": 3

@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moilsurok.DataClassUser
 import com.example.moilsurok.R
 
-class ListAdapter(private val context: Context): RecyclerView.Adapter<ListAdapter.ViewHolder>() {
-    private var userList = mutableListOf<DataClassUser>()
+class ListAdapter(private val context: Context, private var userList: MutableList<DataClassUser>):
+    RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+
+
+
 
     fun setListData(data:MutableList<DataClassUser>){
         userList = data
@@ -23,10 +26,11 @@ class ListAdapter(private val context: Context): RecyclerView.Adapter<ListAdapte
 
     override fun onBindViewHolder(holder: ListAdapter.ViewHolder, position: Int) {
         val user : DataClassUser = userList[position]
-        holder.name.text = user.name
-        holder.phoneNumber.text = user.phoneNumber
-        holder.email.text = user.email
-        holder.company.text = user.company
+//        holder.name.text = user.name
+//        holder.phoneNumber.text = user.phoneNumber
+//        holder.email.text = user.email
+//        holder.company.text = user.company
+//        holder.year.text = user.year
     }
 
     override fun getItemCount(): Int {
@@ -34,10 +38,11 @@ class ListAdapter(private val context: Context): RecyclerView.Adapter<ListAdapte
     }
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        val name : TextView = itemView.findViewById(R.id.noteName)
-        val phoneNumber : TextView = itemView.findViewById(R.id.phoneNumber)
-        val email : TextView = itemView.findViewById(R.id.mailAdress)
-        val company : TextView = itemView.findViewById(R.id.companyInfo)
+//        val name : TextView = itemView.findViewById(R.id.noteName)
+//        val phoneNumber : TextView = itemView.findViewById(R.id.phoneNumber)
+//        val email : TextView = itemView.findViewById(R.id.mailAdress)
+//        val company : TextView = itemView.findViewById(R.id.companyInfo)
+//        val year : TextView = itemView.findViewById(R.id.noteYear)
 
     }
 
