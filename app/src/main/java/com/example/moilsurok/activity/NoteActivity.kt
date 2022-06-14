@@ -7,14 +7,23 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moilsurok.ListViewModel
 import com.example.moilsurok.R
+import com.example.moilsurok.adapter.ListAdapter
 import com.example.moilsurok.databinding.ActivityNoteBinding
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 class NoteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNoteBinding
+    private lateinit var database: DatabaseReference
+    private lateinit var adapter:ListAdapter
+    private val viewModel by lazy { ViewModelProvider(this).get(ListViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,18 +33,24 @@ class NoteActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        //OnCreate에서 database 객체를 초기화 해줬다.
+        database = FirebaseDatabase.getInstance().reference
+
+
         val noteList = mutableListOf<Note>()
-        for (i in 0..100) {
-            noteList.add(Note("" + "님", "" + "기", "-" + "-", "", ""))
-            //어떻게 데이터 값을 받을 것인지
-        }
+
 
         val recyclerView = findViewById<RecyclerView>(R.id.noteRecyclerView)
         //리사이클러뷰에 어답터 장착
         recyclerView.adapter = NoteAdapter(noteList, LayoutInflater.from(this))
         //리사이클러뷰에 레이아웃 매니저 장착
         recyclerView.layoutManager = LinearLayoutManager(this)
+        observerData()
 
+        for (i in 0..100) {
+            noteList.add(Note("" + "님", "" + "기", "-" + "-", "", ""))
+            //어떻게 데이터 값을 받을 것인지
+        }
 
 
         binding.backKey.setOnClickListener {
@@ -52,19 +67,24 @@ class NoteActivity : AppCompatActivity() {
             binding.menuBtn2.visibility = View.GONE
         }
 
-
-
-
-
-
     }
+    fun observerData(){
+        viewModel.fetchData().observe(this, Observer {
+            adapter.setListData(it)
+            adapter.notifyDataSetChanged()
+        })
+    }
+
 
 }
 
 
+
+
 class checkboxData(
     var id: Long,
-    var checked: Boolean)
+    var checked: Boolean
+)
 
 class Note(
     val name: String,
@@ -115,7 +135,6 @@ class NoteAdapter(
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
 
     }
-
 
 
 }

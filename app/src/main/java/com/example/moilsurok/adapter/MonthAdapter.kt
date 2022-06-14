@@ -16,10 +16,12 @@ class AdapterMonth: RecyclerView.Adapter<AdapterMonth.MonthView>() {
 
     inner class MonthView(val layout: View): RecyclerView.ViewHolder(layout)
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MonthView {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_month, parent, false)
         return MonthView(view)
     }
+
 
     override fun onBindViewHolder(holder: MonthView, position: Int) {
         calendar.time = Date()
