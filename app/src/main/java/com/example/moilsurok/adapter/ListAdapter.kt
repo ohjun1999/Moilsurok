@@ -26,11 +26,11 @@ class ListAdapter(private val context: Context, private var userList: MutableLis
 
     override fun onBindViewHolder(holder: ListAdapter.ViewHolder, position: Int) {
         val user : DataClassUser = userList[position]
-//        holder.name.text = user.name
-//        holder.phoneNumber.text = user.phoneNumber
-//        holder.email.text = user.email
-//        holder.company.text = user.company
-//        holder.year.text = user.year
+        holder.name.text = user.name
+        holder.phoneNumber.text = user.phoneNumber
+        holder.email.text = user.email
+        holder.company.text = user.company
+        holder.year.text = user.year
     }
 
     override fun getItemCount(): Int {
@@ -38,11 +38,11 @@ class ListAdapter(private val context: Context, private var userList: MutableLis
     }
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-//        val name : TextView = itemView.findViewById(R.id.noteName)
-//        val phoneNumber : TextView = itemView.findViewById(R.id.phoneNumber)
-//        val email : TextView = itemView.findViewById(R.id.mailAdress)
-//        val company : TextView = itemView.findViewById(R.id.companyInfo)
-//        val year : TextView = itemView.findViewById(R.id.noteYear)
+        val name : TextView = itemView.findViewById(R.id.noteName)
+        val phoneNumber : TextView = itemView.findViewById(R.id.phoneNumber)
+        val email : TextView = itemView.findViewById(R.id.mailAdress)
+        val company : TextView = itemView.findViewById(R.id.companyInfo)
+        val year : TextView = itemView.findViewById(R.id.noteYear)
 
     }
 

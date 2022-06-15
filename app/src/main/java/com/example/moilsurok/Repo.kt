@@ -12,7 +12,7 @@ class Repo {
     fun getData(): LiveData<MutableList<DataClassUser>> {
         val mutableData = MutableLiveData<MutableList<DataClassUser>>()
         val database = Firebase.database
-        val myRef = database.getReference("User")
+        val myRef = database.getReference("user")
         myRef.addValueEventListener(object : ValueEventListener {
             val listData: MutableList<DataClassUser> = mutableListOf<DataClassUser>()
             override fun onDataChange(snapshot: DataSnapshot) {
