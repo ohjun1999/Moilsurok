@@ -39,7 +39,7 @@ class NoteActivity : AppCompatActivity() {
         adapter = ListAdapter(this, userList)
 
         for (i in 0..100) {
-            userList.add(DataClassUser("" + "님", "" + "기", "", "",""))
+            userList.add(DataClassUser("" + "님", "" + "기", "", "","",""))
             //어떻게 데이터 값을 받을 것인지
         }
         recyclerView.layoutManager = LinearLayoutManager(this)

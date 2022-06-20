@@ -1,13 +1,17 @@
 package com.example.moilsurok.adapter
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moilsurok.R
+import com.example.moilsurok.activity.DateActivity
 import java.util.*
 
 class AdapterMonth: RecyclerView.Adapter<AdapterMonth.MonthView>() {
@@ -20,9 +24,12 @@ class AdapterMonth: RecyclerView.Adapter<AdapterMonth.MonthView>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MonthView {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_month, parent, false)
         return MonthView(view)
+
+
     }
 
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MonthView, position: Int) {
         calendar.time = Date()
         calendar.set(Calendar.DAY_OF_MONTH, 1)
@@ -45,7 +52,12 @@ class AdapterMonth: RecyclerView.Adapter<AdapterMonth.MonthView>() {
         holder.layout.findViewById<RecyclerView>(R.id.monthDayList).apply {
             layoutManager = dayListManager
             adapter = dayListAdapter
+
         }
+//        holder.itemView.findViewById<ImageButton>(R.id.backKey).setOnClickListener {
+//
+//
+//        }
     }
 
     override fun getItemCount(): Int {

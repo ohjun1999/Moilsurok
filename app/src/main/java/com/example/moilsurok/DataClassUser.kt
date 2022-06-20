@@ -5,5 +5,6 @@ data class DataClassUser(
     val year: String ="year",
     val email: String = "email",
     val phoneNumber: String = "phoneNumber",
-    val company: String = "company"
+    val company: String = "company",
+    val position: String = "position"
 )
