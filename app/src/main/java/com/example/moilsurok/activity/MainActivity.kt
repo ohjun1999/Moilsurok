@@ -35,8 +35,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.goDate.setOnClickListener {
-            val intent = Intent(this, DateActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+
         }
         binding.goExplain.setOnClickListener {
             val intent = Intent(this, ExplainGroupActivity::class.java)

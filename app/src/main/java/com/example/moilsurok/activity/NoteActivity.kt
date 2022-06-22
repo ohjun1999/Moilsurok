@@ -61,6 +61,7 @@ class NoteActivity : AppCompatActivity() {
             binding.menuBtn2.visibility = View.GONE
         }
 
+
     }
 
     fun observerData(){

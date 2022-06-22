@@ -21,6 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.NoteProfileDetailActivity"/>
+        <activity android:name=".activity.HomeActivity"/>
         <activity android:name=".activity.DateActivity"/>
         <activity android:name=".activity.ExtraActivity"/>
         <activity android:name=".activity.AlarmActivity"/>

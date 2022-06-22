@@ -2,6 +2,7 @@ package com.example.moilsurok.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moilsurok.DataClassUser
 import com.example.moilsurok.R
+import com.example.moilsurok.activity.ExtraActivity
+import com.example.moilsurok.activity.NoteProfileDetailActivity
 
 class ListAdapter(private val context: Context, private var userList: MutableList<DataClassUser>) :
     RecyclerView.Adapter<ListAdapter.ViewHolder>() {
@@ -51,7 +54,7 @@ class ListAdapter(private val context: Context, private var userList: MutableLis
 
 
     }
-    
+
 
 }
 
