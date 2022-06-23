@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="130dp"
     android:layout_marginTop="20dp"
-    android:background="@color/white"
+    android:background="?attr/selectableItemBackground"
     android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/noteCard"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

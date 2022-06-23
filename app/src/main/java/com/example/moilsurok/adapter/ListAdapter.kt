@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moilsurok.DataClassUser
 import com.example.moilsurok.R
@@ -38,6 +39,19 @@ class ListAdapter(private val context: Context, private var userList: MutableLis
         holder.company.text = user.company
         holder.year.text = user.year
         holder.position.text = user.position
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView?.context, NoteProfileDetailActivity::class.java)
+            intent.putExtra("content","원하는 데이터를 보냅니다.")
+            intent.putExtra("name",user.name)
+            intent.putExtra("year",user.year)
+            intent.putExtra("company",user.company)
+            intent.putExtra("email",user.email)
+            intent.putExtra("phoneNumber",user.phoneNumber)
+            intent.putExtra("position",user.position)
+            ContextCompat.startActivity(holder.itemView.context, intent, null)
+
+        }
     }
 
     override fun getItemCount(): Int {
@@ -52,6 +66,16 @@ class ListAdapter(private val context: Context, private var userList: MutableLis
         val year: TextView = itemView.findViewById(R.id.noteYear)
         val position: TextView = itemView.findViewById(R.id.companyInfo)
 
+
+    }
+
+    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
+
+        init {
+            itemView.setOnClickListener {
+
+            }
+        }
 
     }
 

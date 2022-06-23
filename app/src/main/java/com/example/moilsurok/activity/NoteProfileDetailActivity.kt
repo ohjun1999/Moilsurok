@@ -21,6 +21,20 @@ class NoteProfileDetailActivity : AppCompatActivity() {
         binding.backKey.setOnClickListener {
             finish()
         }
+        val phoneNumber = intent.getStringExtra("phoneNumber")
+        val name = intent.getStringExtra("name")
+        val year = intent.getStringExtra("year")
+        val company = intent.getStringExtra("company")
+        val email = intent.getStringExtra("email")
+        val position = intent.getStringExtra("position")
+
+        binding.dePhoneNumber.text = phoneNumber
+        binding.deName.text = name
+        binding.deYear.text = year
+        binding.deMailAdress.text = email
+        binding.deCompany.text = company
+        binding.dePosition.text = position
+
 
     }
 }
