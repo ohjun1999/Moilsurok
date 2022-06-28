@@ -1,5 +1,7 @@
 package com.example.moilsurok.activity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.moilsurok.databinding.ActivityDateDetailBinding
@@ -20,6 +22,12 @@ class NoteProfileDetailActivity : AppCompatActivity() {
 
         binding.backKey.setOnClickListener {
             finish()
+        }
+        binding.request.setOnClickListener {
+            val input = binding.dePhoneNumber.text.toString()
+            val myUri = Uri.parse("tel:${input}")
+            val myIntent = Intent(Intent.ACTION_DIAL, myUri)
+            startActivity(myIntent)
         }
         val phoneNumber = intent.getStringExtra("phoneNumber")
         val name = intent.getStringExtra("name")

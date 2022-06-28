@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/backGray">
+    android:background="@color/backGray"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/top_bar"
@@ -86,60 +85,103 @@
             android:background="@color/white"
             android:orientation="vertical"
             android:visibility="gone">
-            <SearchView
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="14dp"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:layout_marginBottom="12dp"-->
-<!--                android:orientation="horizontal">-->
+                <FrameLayout
+                    android:layout_width="107dp"
+                    android:layout_height="30dp">
 
-<!--                <androidx.appcompat.widget.AppCompatButton-->
-<!--                    android:layout_width="107dp"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:background="@drawable/line_radius_3dp"-->
-<!--                    android:drawableEnd="@drawable/ic_bxs_down_arrow"-->
-<!--                    android:padding="10dp" />-->
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/searchYear"
+                        android:layout_width="107dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/line_radius_3dp"
+                        android:drawableEnd="@drawable/ic_bxs_down_arrow"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="전체"
+                        android:textColor="@color/btnGray"
+                        android:textSize="13sp" />
 
-<!--                <EditText-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@drawable/line_radius_3dp" />-->
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/searchYear2"
+                        android:layout_width="107dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/line_radius_3dp"
+                        android:drawableEnd="@drawable/ic_bxs_up_arrow"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="전체"
+                        android:textColor="@color/black"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
 
-<!--            </LinearLayout>-->
+                </FrameLayout>
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:layout_marginBottom="12dp"-->
-<!--                android:orientation="horizontal">-->
+                <EditText
+                    android:id="@+id/searchName"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/line_radius_3dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:hint="이름"
+                    android:textColor="@color/btnGray"
+                    android:textSize="13sp" />
 
-<!--                <androidx.appcompat.widget.AppCompatButton-->
-<!--                    android:layout_width="134dp"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:background="@drawable/line_radius_3dp"-->
-<!--                    android:drawableEnd="@drawable/ic_bxs_down_arrow"-->
-<!--                    android:padding="10dp" />-->
+            </LinearLayout>
 
-<!--                <androidx.appcompat.widget.AppCompatButton-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@drawable/line_radius_3dp" />-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="12dp">
 
-<!--            </LinearLayout>-->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/searchPosition"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/line_radius_3dp"
+                    android:drawableEnd="@drawable/ic_bxs_down_arrow"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="전체"
+                    android:textColor="@color/btnGray"
+                    android:textSize="13sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/searchPosition2"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/line_radius_3dp"
+                    android:drawableEnd="@drawable/ic_bxs_up_arrow"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="전체"
+                    android:visibility="gone"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+
+            </FrameLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
