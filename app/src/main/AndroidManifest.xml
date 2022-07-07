@@ -17,10 +17,17 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.SplashActivity"
+            android:exported="true"
+            android:theme="@style/SplashTheme">
+
+        </activity>
+        <activity android:name=".activity.DateActivity1"/>
+        <activity android:name=".activity.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"/>
         <activity android:name=".activity.NoteProfileDetailActivity"/>
         <activity android:name=".activity.HomeActivity"/>
         <activity android:name=".activity.DateActivity"/>

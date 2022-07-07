@@ -49,7 +49,7 @@ class Example1Fragment : BaseFragment(R.layout.example_1_fragment), HasToolbar {
         val daysOfWeek = daysOfWeekFromLocale()
         binding.legendLayout.root.children.forEachIndexed { index, view ->
             (view as TextView).apply {
-                text = daysOfWeek[index].getDisplayName(TextStyle.SHORT, Locale.KOREAN).toUpperCase(Locale.KOREAN)
+                text = daysOfWeek[index].getDisplayName(TextStyle.SHORT, Locale.KOREAN)
                 setTextColorRes(R.color.example_1_white_light)
             }
         }

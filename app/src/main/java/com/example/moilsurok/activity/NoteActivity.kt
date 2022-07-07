@@ -6,6 +6,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -61,49 +62,15 @@ class NoteActivity : AppCompatActivity() {
         binding.menuBtn2.setOnClickListener {
             binding.search.visibility = View.GONE
             binding.menuBtn2.visibility = View.GONE
-        }
-        binding.searchYear.setOnClickListener {
-            binding.searchYear2.visibility = View.VISIBLE
-            binding.searchYear.visibility = View.GONE
-        }
-        binding.searchYear2.setOnClickListener {
-            binding.searchYear2.visibility = View.GONE
-            binding.searchYear.visibility = View.VISIBLE
-        }
-        binding.searchPosition.setOnClickListener {
-            binding.searchPosition2.visibility = View.VISIBLE
-            binding.searchPosition.visibility = View.GONE
-        }
 
-//        binding.searchYear.adapter = ArrayAdapter.createFromResource(this, R.array.itemList, android.R.layout.simple_spinner_item)
-//        binding.searchYear.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//            }
-//
-//            override fun onItemSelected(
-//                parent: AdapterView<*>?,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//                when (position) {
-//                    //선택안함
-//                    0 -> {
-//
-//                    }
-//                    //1기
-//                    1 -> {
-//
-//                    }
-//                }
-//            }
-//        }
-
-        binding.searchPosition2.setOnClickListener {
-            binding.searchPosition2.visibility = View.GONE
-            binding.searchPosition.visibility = View.VISIBLE
         }
+        val sYear = resources.getStringArray(R.array.itemList)
+        val sAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, sYear)
+        binding.searchYear.adapter = sAdapter
 
+        val position = resources.getStringArray(R.array.itemList)
+        val pAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, position)
+        binding.searchPosition.adapter = pAdapter
 
 
 

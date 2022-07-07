@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.moilsurok.R
 import com.example.moilsurok.adapter.AdapterMonth
-import com.example.moilsurok.databinding.ActivityAssociationInquiryBinding
 import com.example.moilsurok.databinding.ActivityDateBinding
 import com.example.moilsurok.item.DayViewContainer
 import com.kizitonwose.calendarview.model.CalendarDay
@@ -21,11 +20,20 @@ import java.util.*
 
 
 class DateActivity : AppCompatActivity() {
+
+
     private lateinit var binding: ActivityDateBinding
     val currentMonth = YearMonth.now()
     val firstMonth = currentMonth.minusMonths(10)
     val lastMonth = currentMonth.plusMonths(10)
     val firstDayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
+    val datepickercalendar = Calendar.getInstance()
+    val year = datepickercalendar.get(Calendar.YEAR)
+    val month = datepickercalendar.get(Calendar.MONTH)
+    val day = datepickercalendar.get(Calendar.DAY_OF_MONTH)
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +42,9 @@ class DateActivity : AppCompatActivity() {
         // binding class의 root를 참조하여 view로
         val view = binding.root
         setContentView(view)
+
+
+
 
         val monthListManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         val monthListAdapter = AdapterMonth()
@@ -46,28 +57,30 @@ class DateActivity : AppCompatActivity() {
         val snap = PagerSnapHelper()
         snap.attachToRecyclerView(binding.calendarView)
 
-
-//        binding.calendarView.dayBinder = object : DayBinder<DayViewContainer> {
-//            // Called only when a new container is needed.
-//            override fun create(view: View) = DayViewContainer(view)
-//
-//            // Called every time we need to reuse a container.
-//            override fun bind(container: DayViewContainer, day: CalendarDay) {
-//                container.textView.text = day.date.dayOfMonth.toString()
-//
-//                if (day.owner == DayOwner.THIS_MONTH) {
-//                    container.textView.setTextColor(Color.WHITE)
-//                } else {
-//                    container.textView.setTextColor(Color.GRAY)
-//                }
-//
-//                binding.calendarView.setup(firstMonth, lastMonth, firstDayOfWeek)
-//                binding.calendarView.scrollToMonth(currentMonth)
-//            }
+        val calendar =Calendar.getInstance()
 
 
+        binding.calendarView.dayBinder = object : DayBinder<DayViewContainer> {
+            // Called only when a new container is needed.
+            override fun create(view: View) = DayViewContainer(view)
 
-//        }
+            // Called every time we need to reuse a container.
+            override fun bind(container: DayViewContainer, day: CalendarDay) {
+                container.textView.text = day.date.dayOfMonth.toString()
+
+                if (day.owner == DayOwner.THIS_MONTH) {
+                    container.textView.setTextColor(Color.WHITE)
+                } else {
+                    container.textView.setTextColor(Color.GRAY)
+                }
+
+                binding.calendarView.setup(firstMonth, lastMonth, firstDayOfWeek)
+                binding.calendarView.scrollToMonth(currentMonth)
+            }
+
+
+
+        }
     }
 
 }

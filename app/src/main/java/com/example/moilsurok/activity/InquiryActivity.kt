@@ -5,9 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.moilsurok.R
 import com.example.moilsurok.databinding.ActivityInquiryBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 class InquiryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInquiryBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +23,7 @@ class InquiryActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
         binding.backKey.setOnClickListener {
             finish()
         }
@@ -24,5 +31,6 @@ class InquiryActivity : AppCompatActivity() {
             val intent = Intent(this,InquiryTextActivity::class.java)
             startActivity(intent)
         }
+
     }
 }

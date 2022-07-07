@@ -38,7 +38,7 @@ class ListAdapter(private val context: Context, private var userList: MutableLis
         holder.email.text = user.email
         holder.company.text = user.company
         holder.year.text = user.year
-        holder.position.text = user.position
+        holder.position.text = user.comPosition
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView?.context, NoteProfileDetailActivity::class.java)
@@ -48,7 +48,7 @@ class ListAdapter(private val context: Context, private var userList: MutableLis
             intent.putExtra("company",user.company)
             intent.putExtra("email",user.email)
             intent.putExtra("phoneNumber",user.phoneNumber)
-            intent.putExtra("position",user.position)
+            intent.putExtra("position",user.comPosition)
             ContextCompat.startActivity(holder.itemView.context, intent, null)
 
         }

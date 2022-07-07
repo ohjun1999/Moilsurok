@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/moilGreen"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/background_light"
+        android:gravity="center"
+        android:text="로그인"
+        android:textColor="@color/colorAccent" />
+
+    <EditText
+        android:id="@+id/loginPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/background_light"
+        android:gravity="center"
+        android:hint="전화번호를 입력하시오"
+        android:textColor="@color/btnGray"
+        android:autofillHints="password" />
+
+
+    <TextView
+        android:id="@+id/loginEnter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_bright"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="확인"
+        android:textColor="@android:color/white" />
+</LinearLayout>

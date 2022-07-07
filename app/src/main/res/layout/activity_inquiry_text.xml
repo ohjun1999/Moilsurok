@@ -51,11 +51,12 @@
         android:layout_height="0dp">
 
         <EditText
+            android:id="@+id/inquiryTitle"
             android:padding="12dp"
             android:background="@drawable/back_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="일정보기 오류 문의합니다."
+            android:hint="제목"
             />
         <View
             android:layout_width="match_parent"
@@ -63,13 +64,14 @@
             android:layout_weight="20"/>
 
         <EditText
+            android:id="@+id/inquiryContent"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="312"
             android:padding="12dp"
             android:background="@drawable/back_text"
             android:gravity="top"
-            android:text="저는 LINK의 원빈 초이이빈다.\n하늘능 날을 뮝해 라고싶은마링 망ㄴ흥ㄴ데\n사랑하는 이릉 ㅜ미한 다느이"/>
+            android:hint="내용"/>
 
 
 
@@ -80,6 +82,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/goInquiryFire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="문의하기"

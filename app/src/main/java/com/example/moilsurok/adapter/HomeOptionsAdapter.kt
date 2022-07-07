@@ -46,15 +46,15 @@ class HomeOptionsAdapter(val onClick: (ExampleItem) -> Unit) :
 
         fun bind(item: ExampleItem) {
             val context = itemView.context
-            binding.itemOptionTitle.apply {
-                text = if (item.titleRes != 0) context.getString(item.titleRes) else null
-                isVisible = text.isNotBlank()
-            }
+//            binding.itemOptionTitle.apply {
+//                text = if (item.titleRes != 0) context.getString(item.titleRes) else null
+//                isVisible = text.isNotBlank()
+//            }
 
-            binding.itemOptionSubtitle.apply {
-                text = if (item.subtitleRes != 0) context.getString(item.subtitleRes) else null
-                isVisible = text.isNotBlank()
-            }
+//            binding.itemOptionSubtitle.apply {
+//                text = if (item.subtitleRes != 0) context.getString(item.subtitleRes) else null
+//                isVisible = text.isNotBlank()
+//            }
         }
     }
 }
