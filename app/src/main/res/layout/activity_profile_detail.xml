@@ -129,7 +129,7 @@
                 android:src="@drawable/ic_person" />
 
             <TextView
-                android:id="@+id/deBirth"
+                android:id="@+id/deBirthDate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="42dp"
@@ -143,34 +143,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="23dp"
-                android:background="@drawable/radius_all"
-                android:backgroundTint="@color/modifyBlue"
-                android:padding="6dp"
-                android:src="@drawable/ic_home" />
-
-            <TextView
-                android:id="@+id/deHome"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="42dp"
-                android:layout_marginEnd="23dp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:paddingStart="10dp"
-                android:text="경기도 수원시 권선구"
-                android:textColor="@color/black"
-                android:textSize="13sp" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -187,7 +159,7 @@
                 android:src="@drawable/ic_phone_gray" />
 
             <TextView
-                android:id="@+id/dePhoneNumber"
+                android:id="@+id/dePhoneNum"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="42dp"
@@ -216,7 +188,7 @@
                 android:src="@drawable/ic_mail_gray" />
 
             <TextView
-                android:id="@+id/deMailAdress"
+                android:id="@+id/deEmail"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="42dp"
@@ -247,7 +219,7 @@
                 android:src="@drawable/ic_info" />
 
             <TextView
-                android:id="@+id/deFax"
+                android:id="@+id/deFaxNum"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="42dp"
@@ -278,11 +250,13 @@
             android:layout_marginBottom="20dp">
 
             <TextView
-                android:layout_width="26dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="30dp"
                 android:layout_marginStart="26dp"
                 android:gravity="center"
                 android:text="직장"
+                android:textSize="13sp"
                 android:textColor="@color/black" />
 
             <TextView
@@ -291,7 +265,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="23dp"
-                android:layout_weight="1"
+                android:layout_weight="15"
                 android:gravity="center_vertical"
                 android:paddingStart="10dp"
                 android:text="LINK"
@@ -306,20 +280,22 @@
             android:layout_marginBottom="20dp">
 
             <TextView
-                android:layout_width="26dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="30dp"
                 android:layout_marginStart="26dp"
                 android:gravity="center"
                 android:text="부서"
+                android:textSize="13sp"
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/deTeam"
+                android:id="@+id/deDepartment"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="23dp"
-                android:layout_weight="1"
+                android:layout_weight="15"
                 android:gravity="center_vertical"
                 android:paddingStart="10dp"
                 android:text="제품개발부서(디자인)"
@@ -334,20 +310,22 @@
             android:layout_marginBottom="20dp">
 
             <TextView
-                android:layout_width="26dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="30dp"
                 android:layout_marginStart="26dp"
                 android:gravity="center"
                 android:text="직급"
+                android:textSize="13sp"
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/dePosition"
+                android:id="@+id/deComPosition"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="23dp"
-                android:layout_weight="1"
+                android:layout_weight="15"
                 android:gravity="center_vertical"
                 android:paddingStart="10dp"
                 android:text="팀장"
@@ -355,6 +333,36 @@
                 android:textSize="13sp" />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="30dp"
+                android:layout_marginStart="26dp"
+                android:gravity="center"
+                android:text="주소"
+                android:textSize="13sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/deComAdr"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="42dp"
+                android:layout_marginEnd="23dp"
+                android:layout_weight="15"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:text="경기도 수원시 권선구"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -362,9 +370,10 @@
             android:layout_marginBottom="25dp">
 
             <ImageView
-                android:layout_width="17dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="30dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="26dp"
                 android:src="@drawable/ic_www"
                 android:textColor="@color/black" />
 
@@ -374,7 +383,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="45dp"
                 android:layout_marginEnd="23dp"
-                android:layout_weight="1"
+                android:layout_weight="15"
                 android:gravity="center_vertical"
                 android:paddingStart="10dp"
                 android:text="https://www.hanaw.com/"

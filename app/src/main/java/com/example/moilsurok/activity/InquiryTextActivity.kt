@@ -1,9 +1,13 @@
 package com.example.moilsurok.activity
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import com.example.moilsurok.InquiryDataClass
 import com.example.moilsurok.R
 
@@ -13,11 +17,13 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.*
 
 class InquiryTextActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInquiryTextBinding
-    var auth : FirebaseAuth? = null
-    var firestore : FirebaseFirestore? = null
+    var auth: FirebaseAuth? = null
+    var firestore: FirebaseFirestore? = null
 //    private val database by lazy { FirebaseDatabase.getInstance() }
 //    private val userRef = database.getReference("teams")
 //    private val userRefChild = userRef.child("FxRFio9hTwGqAsU5AIZd")
@@ -34,22 +40,49 @@ class InquiryTextActivity : AppCompatActivity() {
 
         auth = Firebase.auth
         firestore = FirebaseFirestore.getInstance()
+        val now = System.currentTimeMillis()
+        val date = Date(now)
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd kk:mm", Locale("ko", "KR"))
+        val nowDate = dateFormat.format(date)
 
-
+        binding.constraintLayout.setOnClickListener {
+            hideKeyboard()
+        }
 
         binding.backKey.setOnClickListener {
             finish()
         }
         binding.goInquiryFire.setOnClickListener {
+            val intent = Intent(this, InquiryActivity::class.java)
+
+
             var inquiryDataClass = InquiryDataClass()
             inquiryDataClass.uid = auth?.currentUser?.uid
             inquiryDataClass.title = binding.inquiryTitle.text.toString()
             inquiryDataClass.content = binding.inquiryContent.text.toString()
-            inquiryDataClass.pubDate = System.currentTimeMillis()
+            inquiryDataClass.pubDate = nowDate.toString()
+            inquiryDataClass.check = "X"
 
-            firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("Question")?.document()?.set(inquiryDataClass)
-            Toast.makeText(this,"문의가 접수 되었습니다",Toast.LENGTH_SHORT).show()
+
+            firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("Question")
+                ?.document()?.set(inquiryDataClass)
+            Toast.makeText(this, "문의가 접수 되었습니다", Toast.LENGTH_SHORT).show()
+
+            intent.putExtra("제목", binding.inquiryTitle.text.toString())
+            intent.putExtra("내용", binding.inquiryContent.text.toString())
+
+            finish()
 
         }
+
+
+    }
+
+    fun hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.inquiryContent.windowToken, 0)
     }
 }
+
+
+

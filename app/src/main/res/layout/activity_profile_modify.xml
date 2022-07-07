@@ -242,7 +242,7 @@
             android:layout_marginBottom="20dp">
 
             <TextView
-                android:layout_width="26dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginStart="26dp"
                 android:text="직장"
@@ -269,7 +269,7 @@
             android:layout_marginBottom="20dp">
 
             <TextView
-                android:layout_width="26dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginStart="26dp"
                 android:text="부서"
@@ -297,7 +297,7 @@
             android:layout_marginBottom="20dp">
 
             <TextView
-                android:layout_width="26dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginStart="26dp"
                 android:text="직급"

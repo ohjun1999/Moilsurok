@@ -24,24 +24,35 @@ class NoteProfileDetailActivity : AppCompatActivity() {
             finish()
         }
         binding.request.setOnClickListener {
-            val input = binding.dePhoneNumber.text.toString()
+            val input = binding.dePhoneNum.text.toString()
             val myUri = Uri.parse("tel:${input}")
             val myIntent = Intent(Intent.ACTION_DIAL, myUri)
             startActivity(myIntent)
         }
-        val phoneNumber = intent.getStringExtra("phoneNumber")
-        val name = intent.getStringExtra("name")
-        val year = intent.getStringExtra("year")
-        val company = intent.getStringExtra("company")
-        val email = intent.getStringExtra("email")
-        val position = intent.getStringExtra("position")
 
-        binding.dePhoneNumber.text = phoneNumber
-        binding.deName.text = name
+        val year = intent.getStringExtra("year")
+        val name = intent.getStringExtra("name")
+        val birthDate = intent.getStringExtra("birthDate")
+        val phoneNum = intent.getStringExtra("phoneNum")
+        val email = intent.getStringExtra("email")
+        val company = intent.getStringExtra("company")
+        val department = intent.getStringExtra("department")
+        val comPosition = intent.getStringExtra("comPosition")
+//        val comTel = intent.getStringExtra("comTel")
+        val comAdr = intent.getStringExtra("comAdr")
+        val faxNum = intent.getStringExtra("faxNum")
+
+
         binding.deYear.text = year
-        binding.deMailAdress.text = email
+        binding.deName.text = name
+        binding.deBirthDate.text = birthDate
+        binding.dePhoneNum.text = phoneNum
+        binding.deEmail.text = email
         binding.deCompany.text = company
-        binding.dePosition.text = position
+        binding.deDepartment.text = department
+        binding.deComPosition.text = comPosition
+        binding.deComAdr.text = comAdr
+        binding.deFaxNum.text = faxNum
 
 
     }

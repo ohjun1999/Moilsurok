@@ -9,7 +9,7 @@ data class InquiryDataClass(
     //유저 이름
     var creator :String? = null,
     //작성 시간
-    var pubDate :Long? = null,
+    var pubDate :String? = null,
     //답변 여부
     var check :String? = null,
     //게시 시간

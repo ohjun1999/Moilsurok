@@ -94,8 +94,8 @@
                         android:src="@drawable/ic_phone_number" />
 
                     <TextView
-                        android:id="@+id/phoneNumber"
-                        android:text="PhoneNumber"
+                        android:id="@+id/phoneNum"
+                        android:text="PhoneNum"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="7dp"
