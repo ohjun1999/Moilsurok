@@ -6,15 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
-import com.example.moilsurok.InquiryDataClass
-import com.example.moilsurok.R
+import com.example.moilsurok.dataClass.InquiryDataClass
 
 import com.example.moilsurok.databinding.ActivityInquiryTextBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
@@ -68,8 +64,11 @@ class InquiryTextActivity : AppCompatActivity() {
                 ?.document()?.set(inquiryDataClass)
             Toast.makeText(this, "문의가 접수 되었습니다", Toast.LENGTH_SHORT).show()
 
-            intent.putExtra("제목", binding.inquiryTitle.text.toString())
-            intent.putExtra("내용", binding.inquiryContent.text.toString())
+            intent.putExtra("title", inquiryDataClass.title.toString())
+            intent.putExtra("pubDate", inquiryDataClass.pubDate.toString())
+            intent.putExtra("uid", inquiryDataClass.uid.toString())
+
+
 
             finish()
 

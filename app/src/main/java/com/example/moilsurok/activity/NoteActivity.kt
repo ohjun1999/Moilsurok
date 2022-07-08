@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moilsurok.R
+import com.example.moilsurok.dataClass.UserDataClass
 import com.example.moilsurok.databinding.ActivityNoteBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -34,11 +35,10 @@ class NoteActivity : AppCompatActivity() {
         // 파이어스토어 인스턴스 초기화
         firestore = FirebaseFirestore.getInstance()
 
+
+
         binding.noteRecyclerView.adapter = NoteAdapter()
         binding.noteRecyclerView.layoutManager = LinearLayoutManager(this)
-
-
-
 
 
 
@@ -60,27 +60,62 @@ class NoteActivity : AppCompatActivity() {
 
     }
 
+
     inner class NoteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-        private val VIEW_TYPE_ITEM = 0
-        private val VIEW_TYPE_LOADING = 1
-
-
         var deNote: ArrayList<UserDataClass> = arrayListOf()
+        val first =
+            firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("User")
+                ?.orderBy("name")?.limitToLast(20)
 
+
+        // firebase data 불러오기
         init {
-            firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("User")?.orderBy("name")?.limit(20)
-                ?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+            first
+                ?.addSnapshotListener { querySnapshot, _ ->
+//                    val lastVisible = querySnapshot!!.documents[querySnapshot.size() - 1]
+
+//
+//                    val next = firestore
+//                        ?.collection("teams")
+//                        ?.document("FxRFio9hTwGqAsU5AIZd")
+//                        ?.collection("User")
+//                        ?.startAfter(lastVisible)
+//                        ?.limit(20)
                     // ArrayList 비워줌
+
                     deNote.clear()
 
                     for (snapshot in querySnapshot!!.documents) {
                         var item = snapshot.toObject(UserDataClass::class.java)
                         deNote.add(item!!)
+
                     }
+//                    binding.noteRecyclerView.addOnScrollListener(object :
+//                        RecyclerView.OnScrollListener() {
+//                        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                            super.onScrolled(recyclerView, dx, dy)
+//                            //스크롤이 끝에 도달했는지 확인
+//                            if (binding.noteRecyclerView.canScrollVertically(1)) {
+//                                next?.addSnapshotListener{
+//                                    querySnapshot, _ ->
+//                                    for (snapshot in querySnapshot!!.documents) {
+//                                        var item = snapshot.toObject(UserDataClass::class.java)
+//                                        deNote.add(item!!)
+//                                    }
+//
+//                                }
+//
+//                            }
+//                        }
+//                    })
+
+
                     notifyDataSetChanged()
 
                 }
+
+
         }
 
 
@@ -88,6 +123,11 @@ class NoteActivity : AppCompatActivity() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             var view =
                 LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
+
+
+
+
+
             return ViewHolder(view)
         }
 
@@ -122,6 +162,8 @@ class NoteActivity : AppCompatActivity() {
                 ContextCompat.startActivity(holder.itemView.context, intent, null)
 
             }
+
+
         }
 
         // 리사이클러뷰의 아이템 총 개수 반환

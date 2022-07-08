@@ -3,19 +3,26 @@ package com.example.moilsurok.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moilsurok.R
-import com.example.moilsurok.databinding.ActivityNoteBinding
+import com.example.moilsurok.adapter.NoticeAdapter
+import com.example.moilsurok.dataClass.NoticeDataClass
+import com.example.moilsurok.dataClass.UserDataClass
 import com.example.moilsurok.databinding.ActivityNoticeBinding
+import com.google.firebase.database.*
+import com.google.firebase.firestore.FirebaseFirestore
 
 class NoticeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNoticeBinding
+
+    var firestore: FirebaseFirestore? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,65 +32,99 @@ class NoticeActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        firestore = FirebaseFirestore.getInstance()
+
+
+
+        binding.noticeRecyclerView.adapter = NoticeAdapter()
+        binding.noticeRecyclerView.layoutManager = LinearLayoutManager(this)
+
+
         binding.backKey.setOnClickListener {
             finish()
         }
 
-        val noticeList = mutableListOf<Notice>()
-        for (i in 0..100) {
-            noticeList.add(Notice())
-            //어떻게 데이터 값을 받을 것인지
-        }
-
-        val recyclerView = findViewById<RecyclerView>(R.id.noticeRecyclerView)
-        //리사이클러뷰에 어답터 장착
-        recyclerView.adapter = NoticeAdapter(noticeList, LayoutInflater.from(this))
-        //리사이클러뷰에 레이아웃 매니저 장착
-        recyclerView.layoutManager = LinearLayoutManager(this)
 
     }
-}
 
+    inner class NoticeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-class Notice(
-
-)
-
-class NoticeAdapter(
-    var noticeList: MutableList<Notice>,
-    var inflater: LayoutInflater
-) : RecyclerView.Adapter<NoticeAdapter.NoticeViewHolder>() {
-
-    class NoticeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var deNotice: ArrayList<NoticeDataClass> = arrayListOf()
+        val first =
+            firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("Notice")
 
 
 
-        //아이템 뷰의 상세 뷰 컴포넌트를 홀드(id선택)한다.
-        val noticeDate: TextView
-        val noticeTitle: TextView
-
+        // firebase data 불러오기
         init {
-            noticeDate = itemView.findViewById(R.id.registrationDate)
-            noticeTitle = itemView.findViewById(R.id.whatNotice)
+            first
+                ?.addSnapshotListener { querySnapshot, _ ->
+//
+
+                    deNotice.clear()
+
+                    for (snapshot in querySnapshot!!.documents) {
+                        var item = snapshot.toObject(NoticeDataClass::class.java)
+                        deNotice.add(item!!)
+
+                    }
+
+
+                    notifyDataSetChanged()
+
+                }
+
+
         }
 
 
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoticeViewHolder {
-        //아이템 뷰를 리턴
-        val view = inflater.inflate(R.layout.item_notice, parent, false)
-
-        return NoticeViewHolder(view)
-    }
-
-    override fun getItemCount(): Int {
-        //전체 데이터의 크기(갯수) 리턴
-        return noticeList.size
-    }
+        // xml 파일을 inflate 하여 ViewHolder 를 생성
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+            var view =
+                LayoutInflater.from(parent.context).inflate(R.layout.item_notice, parent, false)
 
 
-    override fun onBindViewHolder(holder: NoticeViewHolder, position: Int) {
+
+
+
+            return ViewHolder(view)
+        }
+
+        inner class Holder(view: View) : RecyclerView.ViewHolder(view) {
+        }
+
+        // onCreateViewHolder 에서 만든 view 와 실제 데이터를 연결
+        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+            var viewHolder = (holder as ViewHolder).itemView
+            val notice: NoticeDataClass = deNotice[position]
+            holder.title.text = notice.title
+            holder.modifiedDate.text = notice.modifiedDate
+
+            holder.itemView.setOnClickListener {
+                val intent = Intent(holder.itemView?.context, NoticeDetailActivity::class.java)
+                intent.putExtra("content", "원하는 데이터를 보냅니다.")
+                intent.putExtra("content", notice.content)
+                intent.putExtra("title", notice.title)
+                intent.putExtra("modifiedDate", notice.modifiedDate)
+
+                ContextCompat.startActivity(holder.itemView.context, intent, null)
+
+            }
+
+
+        }
+
+        // 리사이클러뷰의 아이템 총 개수 반환
+        override fun getItemCount(): Int {
+            return deNotice.size
+        }
+
+        inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            val modifiedDate: TextView = itemView.findViewById(R.id.modifiedDate)
+            val title: TextView = itemView.findViewById(R.id.title)
+
+
+        }
 
     }
 

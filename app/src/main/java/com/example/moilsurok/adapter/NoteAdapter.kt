@@ -2,9 +2,7 @@ package com.example.moilsurok.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moilsurok.activity.UserDataClass
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestoreSettings
+import com.example.moilsurok.dataClass.UserDataClass
 
 class NoteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

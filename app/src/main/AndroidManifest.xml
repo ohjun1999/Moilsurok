@@ -25,6 +25,7 @@
             android:theme="@style/SplashTheme">
 
         </activity>
+        <activity android:name=".activity.NoticeDetailActivity"/>
         <activity android:name=".activity.DateActivity1"/>
         <activity android:name=".activity.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"/>

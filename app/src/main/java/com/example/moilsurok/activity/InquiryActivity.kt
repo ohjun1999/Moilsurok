@@ -32,5 +32,10 @@ class InquiryActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val inquiryTitle = intent.getStringExtra("title")
+        val inquiryPubDate = intent.getStringExtra("pubDate")
+
+
+
     }
 }

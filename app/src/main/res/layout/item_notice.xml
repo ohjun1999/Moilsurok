@@ -19,7 +19,7 @@
         />
 
     <TextView
-        android:id="@+id/registrationDate"
+        android:id="@+id/modifiedDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -31,7 +31,7 @@
 
 
     <TextView
-        android:id="@+id/whatNotice"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="모일수록 앱 사용법 공지합니다. 필독해주세요"

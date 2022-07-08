@@ -1,4 +1,4 @@
-package com.example.moilsurok.activity
+package com.example.moilsurok.dataClass
 
 data class UserDataClass(
     val year: String? ="year",

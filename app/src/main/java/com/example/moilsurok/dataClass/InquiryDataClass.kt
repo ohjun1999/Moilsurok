@@ -1,4 +1,4 @@
-package com.example.moilsurok
+package com.example.moilsurok.dataClass
 
 data class InquiryDataClass(
     var uid :String? = null,
