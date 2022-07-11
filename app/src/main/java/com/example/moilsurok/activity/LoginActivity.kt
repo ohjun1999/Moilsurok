@@ -14,14 +14,17 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var adapter: ListAdapter
 
 
-    val loginPhoneNumber = binding.loginPhoneNumber.toString()
-//    val userPhoneNumber = userList.phoneNumber
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val phoneNum = binding.loginPhoneNumber.toString()
+
+        binding.loginEnter.setOnClickListener {
+
+        }
 
 
 

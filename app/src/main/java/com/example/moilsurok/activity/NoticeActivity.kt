@@ -48,32 +48,23 @@ class NoticeActivity : AppCompatActivity() {
     }
 
     inner class NoticeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
         var deNotice: ArrayList<NoticeDataClass> = arrayListOf()
         val first =
             firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("Notice")
-
-
 
         // firebase data 불러오기
         init {
             first
                 ?.addSnapshotListener { querySnapshot, _ ->
-//
 
                     deNotice.clear()
-
                     for (snapshot in querySnapshot!!.documents) {
                         var item = snapshot.toObject(NoticeDataClass::class.java)
                         deNotice.add(item!!)
-
                     }
 
-
                     notifyDataSetChanged()
-
                 }
-
 
         }
 

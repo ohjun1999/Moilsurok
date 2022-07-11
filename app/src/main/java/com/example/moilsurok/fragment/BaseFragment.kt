@@ -1,4 +1,4 @@
-package com.kizitonwose.calendarviewsample
+package com.example.moilsurok.fragment
 
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +17,7 @@ interface HasBackButton
 
 abstract class BaseFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes) {
 
-    val homeActivityToolbar: Toolbar
+    private val homeActivityToolbar: Toolbar
         get() = (requireActivity() as HomeActivity).binding.homeToolbar
 
     override fun onStart() {
@@ -40,6 +40,7 @@ abstract class BaseFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes) {
             homeActivityToolbar.makeVisible()
             (requireActivity() as AppCompatActivity).setSupportActionBar(homeActivityToolbar)
         }
+
 
         if (this is HasBackButton) {
             val actionBar = (requireActivity() as AppCompatActivity).supportActionBar

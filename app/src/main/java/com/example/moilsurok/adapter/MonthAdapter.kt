@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moilsurok.R
-import com.example.moilsurok.activity.DateActivity
+//import com.example.moilsurok.activity.DateActivity
 import java.util.*
 
 class AdapterMonth: RecyclerView.Adapter<AdapterMonth.MonthView>() {

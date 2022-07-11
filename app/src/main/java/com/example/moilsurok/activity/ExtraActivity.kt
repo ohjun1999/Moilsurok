@@ -39,10 +39,6 @@ class ExtraActivity : AppCompatActivity() {
             val intent = Intent(this, InquiryActivity::class.java)
             startActivity(intent)
         }
-        binding.goDetailInquiry.setOnClickListener {
-            val intent = Intent(this, AssociationInquiryActivity::class.java)
-            startActivity(intent)
-        }
 
         binding.backKey.setOnClickListener {
             finish()

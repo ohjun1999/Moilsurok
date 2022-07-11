@@ -1,27 +1,29 @@
 package com.example.moilsurok.activity
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moilsurok.R
 import com.example.moilsurok.databinding.HomeActivityBinding
-import com.example.moilsurok.adapter.HomeOptionsAdapter
-import com.kizitonwose.calendarviewsample.BaseFragment
 import com.example.moilsurok.fragment.Example1Fragment
 
 class HomeActivity : AppCompatActivity() {
 
     internal lateinit var binding: HomeActivityBinding
 
-    private val examplesAdapter = HomeOptionsAdapter {
-        val fragment = it.createView()
+//    private val examplesAdapter = HomeOptionsAdapter {
+//        val fragment = it.createView()
+
+//    }
+
+    fun moveToFirst(){
+        var dateFragment = Example1Fragment()
         supportFragmentManager.beginTransaction()
 
-            .add(R.id.homeContainer, fragment, fragment.javaClass.simpleName)
-            .addToBackStack(fragment.javaClass.simpleName)
+            .add(R.id.homeContainer, dateFragment)
+            .addToBackStack("Example1Fragment")
             .commit()
     }
 
@@ -32,10 +34,13 @@ class HomeActivity : AppCompatActivity() {
         setSupportActionBar(binding.homeToolbar)
         binding.examplesRv.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-            adapter = examplesAdapter
+//            adapter = examplesAdapter
             addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
+            moveToFirst()
         }
     }
+
+
 
 //    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 //        return when (item.itemId) {

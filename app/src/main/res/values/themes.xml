@@ -24,5 +24,17 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="Widget.CalendarView.Custom" parent="android:Widget.CalendarView">
+        <item name="android:focusedMonthDateColor">@android:color/holo_blue_light</item>
+        <item name="android:weekNumberColor">@android:color/holo_red_light</item>
+        <item name="android:selectedWeekBackgroundColor">@android:color/holo_blue_light</item>
+        <item name="android:selectedDateVerticalBar">@android:color/holo_blue_light</item>
+        <item name="android:unfocusedMonthDateColor">@android:color/holo_blue_light</item>
+        <item name="android:weekDayTextAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:dateTextAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
+  
 </resources>

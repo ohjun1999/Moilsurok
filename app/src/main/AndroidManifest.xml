@@ -20,35 +20,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SplashActivity"
+        <activity
+            android:name=".activity.SplashActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
 
         </activity>
-        <activity android:name=".activity.NoticeDetailActivity"/>
-        <activity android:name=".activity.DateActivity1"/>
-        <activity android:name=".activity.LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"/>
-        <activity android:name=".activity.NoteProfileDetailActivity"/>
-        <activity android:name=".activity.HomeActivity"/>
-        <activity android:name=".activity.DateActivity"/>
-        <activity android:name=".activity.ExtraActivity"/>
-        <activity android:name=".activity.AlarmActivity"/>
-        <activity android:name=".activity.DateDetailActivity"/>
-        <activity android:name=".activity.ExplainGroupActivity"/>
-        <activity android:name=".activity.NoteActivity"/>
-        <activity android:name=".activity.NoteProfileChangeActivity"/>
-        <activity android:name=".activity.NoticeActivity"/>
-        <activity android:name=".activity.ProfileModifyActivity"/>
-        <activity android:name=".activity.ManageAuthenticationMethodsActivity"/>
-        <activity android:name=".activity.InquiryActivity"/>
-        <activity android:name=".activity.AssociationInquiryActivity"/>
-        <activity android:name=".activity.TermsActivity"/>
-        <activity android:name=".activity.AssociationInquiryTextActivity"/>
-        <activity android:name=".activity.InquiryTextActivity"/>
-        <activity android:name=".activity.AssociationInquiryContextActivity"/>
-        <activity android:name=".activity.InquiryContextActivity"/>
-        <activity android:name=".activity.AlarmSettingActivity"/>
+        <activity android:name=".activity.NoticeDetailActivity" />
+        <activity android:name=".activity.DateActivity1" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.NoteProfileDetailActivity" />
+        <activity android:name=".activity.HomeActivity" />
+        <activity android:name=".activity.DateActivity" />
+        <activity android:name=".activity.ExtraActivity" />
+        <activity android:name=".activity.AlarmActivity" />
+        <activity android:name=".activity.DateDetailActivity" />
+        <activity android:name=".activity.ExplainGroupActivity" />
+        <activity android:name=".activity.NoteActivity" />
+        <activity android:name=".activity.NoteProfileChangeActivity" />
+        <activity android:name=".activity.NoticeActivity" />
+        <activity android:name=".activity.ProfileModifyActivity" />
+        <activity android:name=".activity.ManageAuthenticationMethodsActivity" />
+        <activity android:name=".activity.InquiryActivity" />
+        <activity android:name=".activity.AssociationInquiryActivity" />
+        <activity android:name=".activity.TermsActivity" />
+        <activity android:name=".activity.AssociationInquiryTextActivity" />
+        <activity android:name=".activity.InquiryTextActivity" />
+        <activity android:name=".activity.AssociationInquiryContextActivity" />
+        <activity android:name=".activity.InquiryContextActivity" />
+        <activity android:name=".activity.AlarmSettingActivity" />
     </application>
 
 </manifest>

@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.moilsurok.R
-import com.example.moilsurok.adapter.HomeOptionsAdapter
 import com.example.moilsurok.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,14 +12,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private val examplesAdapter = HomeOptionsAdapter {
-        val fragment = it.createView()
-        supportFragmentManager.beginTransaction()
 
-            .add(R.id.homeContainer, fragment, fragment.javaClass.simpleName)
-            .addToBackStack(fragment.javaClass.simpleName)
-            .commit()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.goDate.setOnClickListener {
-            val intent = Intent(this, DateActivity1::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
 
         }
