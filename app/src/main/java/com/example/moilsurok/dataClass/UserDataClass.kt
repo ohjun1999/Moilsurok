@@ -3,7 +3,7 @@ package com.example.moilsurok.dataClass
 data class UserDataClass(
     val year: String? ="year",
     val name: String? = "name",
-    val birthDate: String? =  "birthdate",
+    val birthdate: String? =  "birthdate",
     val phoneNum: String? = "phoneNum",
     val email: String? = "email",
     val company: String? = "company",

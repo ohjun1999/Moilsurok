@@ -67,7 +67,6 @@ class NoteActivity : AppCompatActivity() {
         var deNote: ArrayList<UserDataClass> = arrayListOf()
         val first =
             firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("User")
-                ?.orderBy("name")?.limitToLast(20)
 
 
         // firebase data 불러오기
@@ -120,7 +119,7 @@ class NoteActivity : AppCompatActivity() {
                 intent.putExtra("content", "원하는 데이터를 보냅니다.")
                 intent.putExtra("year", user.year)
                 intent.putExtra("name", user.name)
-                intent.putExtra("birthDate", user.birthDate)
+                intent.putExtra("birthdate", user.birthdate)
                 intent.putExtra("phoneNum", user.phoneNum)
                 intent.putExtra("email", user.email)
                 intent.putExtra("company", user.company)

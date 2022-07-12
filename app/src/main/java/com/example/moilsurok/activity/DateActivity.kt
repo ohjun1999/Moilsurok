@@ -114,9 +114,14 @@ class DateActivity : AppCompatActivity() {
 //
 //                }
 
+
                 if (day.owner == DayOwner.THIS_MONTH) {
-                    when (today) {
-                        day.date -> {
+                    when {
+//                        selectedDates.contains(day.date) -> {
+//                            textView.setTextColorRes(R.color.black)
+//                            textView.setBackgroundResource(R.drawable.example_1_selected_bg)
+//                        }
+                        today == day.date -> {
                             textView.setTextColorRes(R.color.white)
                             textView.setBackgroundResource(R.drawable.example_1_selected_bg)
                         }

@@ -32,7 +32,7 @@ class NoteProfileDetailActivity : AppCompatActivity() {
 
         val year = intent.getStringExtra("year")
         val name = intent.getStringExtra("name")
-        val birthDate = intent.getStringExtra("birthDate")
+        val birthdate = intent.getStringExtra("birthdate")
         val phoneNum = intent.getStringExtra("phoneNum")
         val email = intent.getStringExtra("email")
         val company = intent.getStringExtra("company")
@@ -45,7 +45,7 @@ class NoteProfileDetailActivity : AppCompatActivity() {
 
         binding.deYear.text = year
         binding.deName.text = name
-        binding.deBirthDate.text = birthDate
+        binding.deBirthDate.text = birthdate
         binding.dePhoneNum.text = phoneNum
         binding.deEmail.text = email
         binding.deCompany.text = company
