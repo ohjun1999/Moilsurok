@@ -2,6 +2,7 @@ package com.example.moilsurok.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -73,15 +74,7 @@ class NoteActivity : AppCompatActivity() {
         init {
             first
                 ?.addSnapshotListener { querySnapshot, _ ->
-//                    val lastVisible = querySnapshot!!.documents[querySnapshot.size() - 1]
-
 //
-//                    val next = firestore
-//                        ?.collection("teams")
-//                        ?.document("FxRFio9hTwGqAsU5AIZd")
-//                        ?.collection("User")
-//                        ?.startAfter(lastVisible)
-//                        ?.limit(20)
                     // ArrayList 비워줌
 
                     deNote.clear()
@@ -91,26 +84,7 @@ class NoteActivity : AppCompatActivity() {
                         deNote.add(item!!)
 
                     }
-//                    binding.noteRecyclerView.addOnScrollListener(object :
-//                        RecyclerView.OnScrollListener() {
-//                        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//                            super.onScrolled(recyclerView, dx, dy)
-//                            //스크롤이 끝에 도달했는지 확인
-//                            if (binding.noteRecyclerView.canScrollVertically(1)) {
-//                                next?.addSnapshotListener{
-//                                    querySnapshot, _ ->
-//                                    for (snapshot in querySnapshot!!.documents) {
-//                                        var item = snapshot.toObject(UserDataClass::class.java)
-//                                        deNote.add(item!!)
-//                                    }
 //
-//                                }
-//
-//                            }
-//                        }
-//                    })
-
-
                     notifyDataSetChanged()
 
                 }
@@ -123,10 +97,6 @@ class NoteActivity : AppCompatActivity() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             var view =
                 LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
-
-
-
-
 
             return ViewHolder(view)
         }

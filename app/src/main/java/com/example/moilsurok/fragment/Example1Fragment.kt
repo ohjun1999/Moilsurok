@@ -241,7 +241,10 @@ class Example1Fragment : BaseFragment(R.layout.example_1_fragment), HasToolbar {
     inner class ScheduleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         var deSchedule: ArrayList<ScheduleDataClass> = arrayListOf()
         private val first =
-            firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("Schedule")
+            firestore
+                ?.collection("teams")
+                ?.document("FxRFio9hTwGqAsU5AIZd")
+                ?.collection("Schedule")
 
 
         // firebase data 불러오기

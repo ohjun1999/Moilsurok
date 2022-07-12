@@ -1,5 +1,6 @@
 package com.example.moilsurok.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class ScheduleAdapter () :
     RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
 
-    private var deSchedule = mutableListOf<ScheduleDataClass>()
+    var deSchedule = mutableListOf<ScheduleDataClass>()
 
     var firestore: FirebaseFirestore? = null
 
@@ -20,31 +21,34 @@ class ScheduleAdapter () :
         firestore?.collection("teams")
             ?.document("FxRFio9hTwGqAsU5AIZd")
             ?.collection("Schedule")
-            ?.orderBy("pubDate")
-            ?.limitToLast(20)?.addSnapshotListener{ querySnapshot, _ ->
+            ?.addSnapshotListener{ querySnapshot, _ ->
                 deSchedule.clear()
 
                 for (snapshot in querySnapshot!!.documents){
                     var item = snapshot.toObject(ScheduleDataClass::class.java)
                     deSchedule.add(item!!)
                 }
+                notifyDataSetChanged()
             }
 
     }
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_schedule, parent, false)
+
         return ViewHolder(view)
+
     }
 
     override fun getItemCount(): Int = deSchedule.size
 
     override fun onBindViewHolder(holder: ScheduleAdapter.ViewHolder, position: Int) {
         holder.bind(deSchedule[position])
+
+
     }
+
 
 
 
@@ -59,6 +63,5 @@ class ScheduleAdapter () :
 
 
     }
-
 
 }

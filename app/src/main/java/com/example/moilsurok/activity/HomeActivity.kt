@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = HomeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.homeToolbar)
+//        setSupportActionBar(binding.homeToolbar)
         binding.examplesRv.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 //            adapter = examplesAdapter

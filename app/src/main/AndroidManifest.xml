@@ -26,9 +26,13 @@
             android:theme="@style/SplashTheme">
 
         </activity>
+        <activity android:name=".activity.SignInActivity"/>
         <activity android:name=".activity.NoticeDetailActivity" />
-        <activity android:name=".activity.DateActivity1" />
-        <activity android:name=".activity.LoginActivity" />
+<!--        <activity android:name=".activity.DateActivity1" />-->
+        <activity android:name=".activity.LoginActivity"
+            android:exported="true">
+
+        </activity>
         <activity android:name=".activity.NoteProfileDetailActivity" />
         <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.DateActivity" />

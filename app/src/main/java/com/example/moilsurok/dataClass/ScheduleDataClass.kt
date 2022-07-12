@@ -2,23 +2,16 @@ package com.example.moilsurok.dataClass
 
 data class ScheduleDataClass(
 
-    var uid: String? = null,
-
     //내용
-    var content: String? = null,
-
+    val content: String? = "content",
     //유저 이름
-    var creator: String? = null,
-
+    val creator: String? = "creator",
     //날짜
-    var date: String? = null,
-
+    val date: String? = "date",
     //게시 시간
-    var modifiedDate: String? = null,
-
+    val modifiedDate: String? = "modifiedDate",
     //작성 시간
-    var pubDate: String? = null,
-
+    val pubDate: String? = "pubDate",
     //제목
-    var title: String? = null
+    val title: String? = "title"
 )

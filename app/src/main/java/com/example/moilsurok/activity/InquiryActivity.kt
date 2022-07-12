@@ -53,7 +53,7 @@ class InquiryActivity : AppCompatActivity() {
         var deInquiry: ArrayList<InquiryBox> = arrayListOf()
         val first =
             firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")
-                ?.collection("User")
+                ?.collection("Question")
 
         // firebase data 불러오기
         init {
@@ -62,7 +62,7 @@ class InquiryActivity : AppCompatActivity() {
 
                     deInquiry.clear()
                     for (snapshot in querySnapshot!!.documents) {
-                        var item = snapshot.toObject(InquiryBox::class.java)
+                        val item = snapshot.toObject(InquiryBox::class.java)
                         deInquiry.add(item!!)
                     }
 
@@ -79,10 +79,6 @@ class InquiryActivity : AppCompatActivity() {
         ): RecyclerView.ViewHolder {
             var view =
                 LayoutInflater.from(parent.context).inflate(R.layout.item_inquiry, parent, false)
-
-
-
-
 
             return ViewHolder(view)
         }
@@ -114,8 +110,8 @@ class InquiryActivity : AppCompatActivity() {
         }
 
         inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val modifiedDate: TextView = itemView.findViewById(R.id.modifiedDate)
-            val title: TextView = itemView.findViewById(R.id.title)
+            val modifiedDate: TextView = itemView.findViewById(R.id.inquiryDate)
+            val title: TextView = itemView.findViewById(R.id.inquiryTitle)
 
 
         }

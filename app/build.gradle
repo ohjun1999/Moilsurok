@@ -42,6 +42,8 @@ android {
 
 
 dependencies {
+    implementation platform('com.google.firebase:firebase-bom:26.2.0')
+    implementation 'com.github.tizisdeepan:eventscalendar:1.6.1'
     implementation 'com.jakewharton.threetenabp:threetenabp:1.1.1'
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.6'
     def lifecycle_version = "2.4.1"

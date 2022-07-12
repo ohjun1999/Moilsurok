@@ -17,15 +17,15 @@ interface HasBackButton
 
 abstract class BaseFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes) {
 
-    private val homeActivityToolbar: Toolbar
-        get() = (requireActivity() as HomeActivity).binding.homeToolbar
+//    private val homeActivityToolbar: Toolbar
+//        get() = (requireActivity() as HomeActivity).binding.homeToolbar
 
     override fun onStart() {
         super.onStart()
-        if (this is HasToolbar) {
-            homeActivityToolbar.makeGone()
-            (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
-        }
+//        if (this is HasToolbar) {
+//            homeActivityToolbar.makeGone()
+//            (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
+//        }
 
         if (this is HasBackButton) {
             val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
@@ -36,10 +36,10 @@ abstract class BaseFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes) {
 
     override fun onStop() {
         super.onStop()
-        if (this is HasToolbar) {
-            homeActivityToolbar.makeVisible()
-            (requireActivity() as AppCompatActivity).setSupportActionBar(homeActivityToolbar)
-        }
+//        if (this is HasToolbar) {
+//            homeActivityToolbar.makeVisible()
+//            (requireActivity() as AppCompatActivity).setSupportActionBar(homeActivityToolbar)
+//        }
 
 
         if (this is HasBackButton) {
