@@ -82,11 +82,6 @@
                 app:layout_constraintTop_toBottomOf="@id/top_bar"
                 tools:listitem="@layout/item_note" />
 
-            <ProgressBar
-                android:id="@+id/progressCircular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
 

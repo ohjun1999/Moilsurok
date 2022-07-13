@@ -66,14 +66,13 @@ class NoteActivity : AppCompatActivity() {
 
         var deNote: ArrayList<UserDataClass> = arrayListOf()
         val first =
-            firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("User")
+            firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("User")?.whereEqualTo("check","O")
 
 
         // firebase data 불러오기
         init {
             first
                 ?.addSnapshotListener { querySnapshot, _ ->
-//
                     // ArrayList 비워줌
 
                     deNote.clear()
@@ -83,7 +82,6 @@ class NoteActivity : AppCompatActivity() {
                         deNote.add(item!!)
 
                     }
-//
                     notifyDataSetChanged()
 
                 }
@@ -115,7 +113,7 @@ class NoteActivity : AppCompatActivity() {
             holder.comPosition.text = user.comPosition
 
             holder.itemView.setOnClickListener {
-                val intent = Intent(holder.itemView?.context, NoteProfileDetailActivity::class.java)
+                val intent = Intent(holder.itemView.context, NoteProfileDetailActivity::class.java)
                 intent.putExtra("content", "원하는 데이터를 보냅니다.")
                 intent.putExtra("year", user.year)
                 intent.putExtra("name", user.name)

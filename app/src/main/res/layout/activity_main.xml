@@ -20,18 +20,18 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="40dp"
             android:adjustViewBounds="true"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/top_back_moil_green" />
+            android:background="@drawable/top_back_moil_green"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/mainInfo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="15dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/ic_back_info_vector"
             android:elevation="10dp"
+            android:padding="15dp"
             app:layout_constraintBottom_toBottomOf="@id/topImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,16 +56,31 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
+                    android:id="@+id/maCompany"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="LINK"
                     android:textColor="@color/black" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="20기 최원빈"
-                    android:textColor="@color/black" />
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/maYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/maName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="최원빈"
+                        android:textColor="@color/black" />
+                </LinearLayout>
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatImageButton
@@ -110,7 +125,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mainInfo">
-
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -202,6 +216,7 @@
         android:layout_weight="134"
         android:background="@color/backWeakGray"
         app:layout_constraintBottom_toBottomOf="parent" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
