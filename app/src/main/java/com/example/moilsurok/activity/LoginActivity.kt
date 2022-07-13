@@ -92,6 +92,8 @@ class LoginActivity : AppCompatActivity() {
                     intent.putExtra("faxNum", faxNum)
                     startActivity(intent)
 
+                    finish()
+
                 }
 
             }

@@ -3,6 +3,9 @@ package com.example.moilsurok.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import com.example.moilsurok.R
 import com.example.moilsurok.databinding.ActivityMainBinding
 
@@ -10,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     // lateinit 사용
     private lateinit var binding: ActivityMainBinding
 
-
+    private var doubleBackToExit = false
 
 
 
@@ -81,5 +84,21 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+    override fun onBackPressed() {
+        if (doubleBackToExit) {
+            finishAffinity()
+        } else {
+            Toast.makeText(this, "종료하시려면 뒤로가기를 한번 더 눌러주세요.", Toast.LENGTH_SHORT).show()
+            doubleBackToExit = true
+            runDelayed(1500L) {
+                doubleBackToExit = false
+            }
+        }
+    }
+
+
+    fun runDelayed(millis: Long, function: () -> Unit) {
+        Handler(Looper.getMainLooper()).postDelayed(function, millis)
     }
 }
