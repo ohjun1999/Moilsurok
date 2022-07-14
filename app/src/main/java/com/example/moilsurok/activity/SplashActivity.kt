@@ -1,10 +1,14 @@
 package com.example.moilsurok.activity
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.moilsurok.R
 
 class SplashActivity : AppCompatActivity() {
@@ -28,4 +32,6 @@ class SplashActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
     }
+
+
 }

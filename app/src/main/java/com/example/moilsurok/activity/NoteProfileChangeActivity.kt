@@ -45,7 +45,7 @@ class NoteProfileChangeActivity : AppCompatActivity() {
 
         binding.frYear.text = year
         binding.frName.text = name
-        binding.frBirthDate.text = birthdate
+        binding.frBirthDate.text= birthdate
         binding.frPhoneNum.text = phoneNum
         binding.frEmail.text = email
         binding.frCompany.text = company

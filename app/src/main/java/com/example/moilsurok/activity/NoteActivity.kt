@@ -66,7 +66,11 @@ class NoteActivity : AppCompatActivity() {
 
         var deNote: ArrayList<UserDataClass> = arrayListOf()
         val first =
-            firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("User")?.whereEqualTo("check","O")
+            firestore
+                ?.collection("teams")
+                ?.document("FxRFio9hTwGqAsU5AIZd")
+                ?.collection("User")
+                ?.whereEqualTo("check","O")
 
 
         // firebase data 불러오기
@@ -74,7 +78,6 @@ class NoteActivity : AppCompatActivity() {
             first
                 ?.addSnapshotListener { querySnapshot, _ ->
                     // ArrayList 비워줌
-
                     deNote.clear()
 
                     for (snapshot in querySnapshot!!.documents) {

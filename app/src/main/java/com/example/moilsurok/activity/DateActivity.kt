@@ -1,6 +1,9 @@
 package com.example.moilsurok.activity
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -27,6 +31,8 @@ import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
 import com.example.moilsurok.fragment.Event
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -41,47 +47,44 @@ class DateActivity : AppCompatActivity() {
             .show()
     }
 
-    private val inputDialog by lazy {
-        val editText = AppCompatEditText(this)
-        val layout = FrameLayout(this).apply {
-            // Setting the padding on the EditText only pads the input area
-            // not the entire EditText so we wrap it in a FrameLayout.
-            val padding = dpToPx(20, this@DateActivity)
-            setPadding(padding, padding, padding, padding)
-            addView(
-                editText, FrameLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                )
-            )
-        }
-        AlertDialog.Builder(this)
-            .setTitle(getString(R.string.example_3_input_dialog_title))
-            .setView(layout)
-            .setPositiveButton(R.string.save) { _, _ ->
-                saveEvent(editText.text.toString())
-                // Prepare EditText for reuse.
-                editText.setText("")
-            }
-            .setNegativeButton(R.string.close, null)
-            .create()
-            .apply {
-                setOnShowListener {
-                    // Show the keyboard
-                    editText.requestFocus()
-                    context.inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
-                }
-                setOnDismissListener {
-                    // Hide the keyboard
-                    context.inputMethodManager.toggleSoftInput(
-                        InputMethodManager.HIDE_IMPLICIT_ONLY,
-                        0
-                    )
-                }
-            }
-    }
+//    private val inputDialog by lazy {
+//        val editText = AppCompatEditText(this)
+//        val layout = FrameLayout(this).apply {
+//            // Setting the padding on the EditText only pads the input area
+//            // not the entire EditText so we wrap it in a FrameLayout.
+//            val padding = dpToPx(20, this@DateActivity)
+//            setPadding(padding, padding, padding, padding)
+//            addView(editText, FrameLayout.LayoutParams(
+//                ViewGroup.LayoutParams.MATCH_PARENT,
+//                ViewGroup.LayoutParams.WRAP_CONTENT
+//            ))
+//        }
+//        AlertDialog.Builder(this)
+//            .setTitle(getString(R.string.example_3_input_dialog_title))
+//            .setView(layout)
+//            .setPositiveButton(R.string.save) { _, _ ->
+//                saveEvent(editText.text.toString())
+//                // Prepare EditText for reuse.
+//                editText.setText("")
+//            }
+//            .setNegativeButton(R.string.close, null)
+//            .create()
+//            .apply {
+//                setOnShowListener {
+//                    // Show the keyboard
+//                    editText.requestFocus()
+//                    context.inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+//                }
+//                setOnDismissListener {
+//                    // Hide the keyboard
+//                    context.inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+//                }
+//            }
+//    }
+
+
     private lateinit var binding: ActivityDateBinding
-    var firestore: FirebaseFirestore? = null
+//    var firestore: FirebaseFirestore? = null
 
 
     private var selectedDate: LocalDate? = null
@@ -89,7 +92,7 @@ class DateActivity : AppCompatActivity() {
 
     private val titleSameYearFormatter = DateTimeFormatter.ofPattern("MM")
     private val titleFormatter = DateTimeFormatter.ofPattern("yyyy")
-    private val selectionFormatter = DateTimeFormatter.ofPattern("MMM의 일정")
+    private val selectionFormatter = DateTimeFormatter.ofPattern("MM월의 일정")
     private val events = mutableMapOf<LocalDate, List<Event>>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,11 +103,7 @@ class DateActivity : AppCompatActivity() {
         setContentView(view)
 
         binding = ActivityDateBinding.bind(view)
-        binding.exThreeRv.apply {
-            layoutManager = LinearLayoutManager(this@DateActivity, RecyclerView.VERTICAL, false)
-            adapter = eventsAdapter
-            addItemDecoration(DividerItemDecoration(this@DateActivity, RecyclerView.VERTICAL))
-        }
+
         binding.backKey.setOnClickListener {
             finish()
         }
@@ -138,8 +137,7 @@ class DateActivity : AppCompatActivity() {
             }
         }
 
-        binding.exThreeRv.adapter = ScheduleAdapter()
-        binding.exThreeRv.layoutManager = LinearLayoutManager(this)
+
 
 
         binding.exThreeCalendar.dayBinder = object : DayBinder<DayViewContainer> {
@@ -192,8 +190,7 @@ class DateActivity : AppCompatActivity() {
         class MonthViewContainer(view: View) : ViewContainer(view) {
             val legendLayout = Example3CalendarHeaderBinding.bind(view).legendLayout.root
         }
-        binding.exThreeCalendar.monthHeaderBinder = object :
-            MonthHeaderFooterBinder<MonthViewContainer> {
+        binding.exThreeCalendar.monthHeaderBinder = object : MonthHeaderFooterBinder<MonthViewContainer> {
             override fun create(view: View) = MonthViewContainer(view)
             override fun bind(container: MonthViewContainer, month: CalendarMonth) {
                 // Setup each header day text if we have not done that already.
@@ -207,76 +204,12 @@ class DateActivity : AppCompatActivity() {
                 }
             }
         }
+        binding.exThreeRv.adapter = ScheduleAdapter()
+        binding.exThreeRv.layoutManager = LinearLayoutManager(this)
 
-
-    }
-
-    inner class ScheduleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-        //        var firestore: FirebaseFirestore? = null
-        var deSchedule: ArrayList<ScheduleDataClass> = arrayListOf()
-        val theMonth = DateTimeFormatter.ofPattern("yyyy-MM").toString()
-        val first =
-            firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("Schedule")
-                ?.whereEqualTo("date", "2022-07-13T11:29")
-
-
-        // firebase data 불러오기
-        init {
-            first
-                ?.addSnapshotListener { querySnapshot, _ ->
-                    // ArrayList 비워줌
-
-                    deSchedule.clear()
-
-                    for (snapshot in querySnapshot!!.documents) {
-                        val item = snapshot.toObject(ScheduleDataClass::class.java)
-                        deSchedule.add(item!!)
-
-                    }
-                    notifyDataSetChanged()
-
-                }
-
-
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-            var view =
-                LayoutInflater.from(parent.context).inflate(R.layout.example_3_event_item_view, parent, false)
-
-            return ViewHolder(view)
-        }
-
-        inner class Holder(view: View) : RecyclerView.ViewHolder(view) {
-        }
-
-        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            var viewHolder = (holder as ViewHolder).itemView
-            val schedule: ScheduleDataClass = deSchedule[position]
-            holder.content.text = schedule.content
-//            holder.creator.text = user.creator
-//            holder.date.text = user.date
-//            holder.modifiedDate.text = user.modifiedDate
-//            holder.pubDate.text = user.pubDate
-//            holder.title.text = user.title
-        }
-
-        // 리사이클러뷰의 아이템 총 개수 반환
-        override fun getItemCount(): Int {
-            return deSchedule.size
-        }
-
-        inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val content: TextView = itemView.findViewById(R.id.daContent)
-//            val creator: TextView = itemView.findViewById(R.id.phoneNum)
-//            val date: TextView = itemView.findViewById(R.id.mailAdress)
-//            val modifiedDate: TextView = itemView.findViewById(R.id.companyName)
-//            val pubDate: TextView = itemView.findViewById(R.id.noteYear)
-//            val title: TextView = itemView.findViewById(R.id.companyInfo)
-
-
-        }
+//        binding.exThreeAddButton.setOnClickListener {
+//            inputDialog.show()
+//        }
 
 
     }
@@ -318,6 +251,93 @@ class DateActivity : AppCompatActivity() {
         binding.exThreeSelectedDateText.text = selectionFormatter.format(date)
         binding.exOneYearText.text = titleFormatter.format(date)
         binding.exOneMonthText.text = titleSameYearFormatter.format(date)
+
+    }
+
+
+    inner class ScheduleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+        val db = Firebase.firestore
+        var deSchedule: ArrayList<ScheduleDataClass> = arrayListOf()
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM")
+        val formatted = today.format(formatter).toString()
+
+        val first =
+            db
+                .collection("teams")
+                .document("FxRFio9hTwGqAsU5AIZd")
+                .collection("Schedule")
+                .whereGreaterThanOrEqualTo("date",formatted)
+                .whereLessThanOrEqualTo("date", formatted + "\uF7FF")
+
+
+        // firebase data 불러오기
+        init {
+
+            first
+
+                .addSnapshotListener { querySnapshot, _ ->
+                    // ArrayList 비워줌
+
+                    deSchedule.clear()
+
+                    for (snapshot in querySnapshot!!.documents) {
+                        var item = snapshot.toObject(ScheduleDataClass::class.java)
+                        deSchedule.add(item!!)
+                        Log.d("test", formatted)
+                    }
+                    notifyDataSetChanged()
+
+                }
+
+
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+            var view =
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.example_3_event_item_view, parent, false)
+
+
+            return ViewHolder(view)
+        }
+
+        inner class Holder(view: View) : RecyclerView.ViewHolder(view) {
+        }
+
+        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+            var viewHolder = (holder as ViewHolder).itemView
+            val schedule: ScheduleDataClass = deSchedule[position]
+            holder.title.text = schedule.title
+
+
+            holder.itemView.setOnClickListener {
+                val intent = Intent(holder.itemView.context, ScheduleDetailActivity::class.java)
+                intent.putExtra("title",schedule.title)
+                intent.putExtra("date", schedule.date!!.format("yyyy-MM-dd-hh-mm"))
+                intent.putExtra("content",schedule.content)
+                ContextCompat.startActivity(holder.itemView.context, intent, null)
+            }
+
+
+
+        }
+
+        // 리사이클러뷰의 아이템 총 개수 반환
+        override fun getItemCount(): Int {
+            return deSchedule.size
+        }
+
+        inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            val title: TextView = itemView.findViewById(R.id.daTitle)
+//
+
+
+        }
+
+
+    }
+    fun comeDate(date: LocalDate){
 
     }
 

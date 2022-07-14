@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.telephony.TelephonyManager
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -38,8 +39,11 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.loginPhoneNumber.addTextChangedListener(PhoneNumberFormattingTextWatcher())
 
+//       val status = ContextCompat.checkSelfPermission(this,"android.permission.READ_CONTACTS")
+//        if ()
 
     }
+
 
 
     private fun goPhoneNum() {
