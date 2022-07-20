@@ -1,6 +1,7 @@
 package com.example.moilsurok.dataClass
 
 data class UserDataClass(
+    val id: String? = "id",
     val year: String? ="year",
     val name: String? = "name",
     val birthdate: String? =  "birthdate",

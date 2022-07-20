@@ -35,6 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.BookmarkActivity"/>
         <activity android:name=".activity.ScheduleDetailActivity"/>
         <activity android:name=".activity.NoteProfileDetailActivity" />
         <activity android:name=".activity.HomeActivity" />

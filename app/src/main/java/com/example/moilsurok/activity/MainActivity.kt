@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.Toast
 import com.example.moilsurok.R
 import com.example.moilsurok.databinding.ActivityMainBinding
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         val comTel = intent.getStringExtra("comTel")
         val comAdr = intent.getStringExtra("comAdr")
         val faxNum = intent.getStringExtra("faxNum")
+        val id = intent.getStringExtra("id")
 
 
         // 접근 가능
@@ -59,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         }
         binding.goNote.setOnClickListener {
             val intent = Intent(this, NoteActivity::class.java)
+
             startActivity(intent)
         }
         binding.goNotice.setOnClickListener {

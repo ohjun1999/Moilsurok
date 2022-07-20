@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moilsurok.R
+import com.example.moilsurok.dataClass.UserBookMarkDataClass
 import com.example.moilsurok.dataClass.UserDataClass
 import com.example.moilsurok.databinding.ActivityNoteBinding
 import com.google.firebase.firestore.FirebaseFirestore
@@ -36,7 +38,7 @@ class NoteActivity : AppCompatActivity() {
         // 파이어스토어 인스턴스 초기화
         firestore = FirebaseFirestore.getInstance()
 
-
+        val id = intent.getStringExtra("id")
 
         binding.noteRecyclerView.adapter = NoteAdapter()
         binding.noteRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -58,12 +60,17 @@ class NoteActivity : AppCompatActivity() {
 
         }
 
+        binding.goBookmark.setOnClickListener {
+            val intent = Intent(this, BookmarkActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 
 
     inner class NoteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
+        var deBookMark: ArrayList<UserBookMarkDataClass> = arrayListOf()
         var deNote: ArrayList<UserDataClass> = arrayListOf()
         val first =
             firestore
@@ -115,6 +122,13 @@ class NoteActivity : AppCompatActivity() {
             holder.year.text = user.year
             holder.comPosition.text = user.comPosition
 
+
+
+
+
+
+
+
             holder.itemView.setOnClickListener {
                 val intent = Intent(holder.itemView.context, NoteProfileDetailActivity::class.java)
                 intent.putExtra("content", "원하는 데이터를 보냅니다.")
@@ -148,6 +162,8 @@ class NoteActivity : AppCompatActivity() {
             val company: TextView = itemView.findViewById(R.id.companyName)
             val year: TextView = itemView.findViewById(R.id.noteYear)
             val comPosition: TextView = itemView.findViewById(R.id.companyInfo)
+            val check: CheckBox = itemView.findViewById(R.id.bookmark)
+
 
 
         }

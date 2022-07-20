@@ -89,14 +89,14 @@ class NoticeActivity : AppCompatActivity() {
             var viewHolder = (holder as ViewHolder).itemView
             val notice: NoticeDataClass = deNotice[position]
             holder.title.text = notice.title
-            holder.modifiedDate.text = notice.modifiedDate
+            holder.pubDate.text = notice.pubDate
 
             holder.itemView.setOnClickListener {
                 val intent = Intent(holder.itemView?.context, NoticeDetailActivity::class.java)
                 intent.putExtra("content", "원하는 데이터를 보냅니다.")
                 intent.putExtra("content", notice.content)
                 intent.putExtra("title", notice.title)
-                intent.putExtra("modifiedDate", notice.modifiedDate)
+                intent.putExtra("pubDate", notice.pubDate)
 
                 ContextCompat.startActivity(holder.itemView.context, intent, null)
 
@@ -111,7 +111,7 @@ class NoticeActivity : AppCompatActivity() {
         }
 
         inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val modifiedDate: TextView = itemView.findViewById(R.id.modifiedDate)
+            val pubDate: TextView = itemView.findViewById(R.id.modifiedDate)
             val title: TextView = itemView.findViewById(R.id.title)
 
 
