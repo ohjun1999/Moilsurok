@@ -1,15 +1,27 @@
 package com.example.moilsurok.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import com.example.moilsurok.R
-import com.example.moilsurok.databinding.ActivityNoteBinding
+import android.widget.Toast
+import com.example.moilsurok.dataClass.ProfileDataClass
 import com.example.moilsurok.databinding.ActivityNoteProfileChangeBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class NoteProfileChangeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNoteProfileChangeBinding
-
+    var firestore: FirebaseFirestore? = null
+    val db = Firebase.firestore
+    val current = LocalDateTime.now()
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+    val formatted = current.format(formatter)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // binding class 인스턴스 생성
@@ -17,6 +29,7 @@ class NoteProfileChangeActivity : AppCompatActivity() {
         // binding class의 root를 참조하여 view로
         val view = binding.root
         setContentView(view)
+        firestore = FirebaseFirestore.getInstance()
         val year = intent.getStringExtra("year")
         val name = intent.getStringExtra("name")
         val birthdate = intent.getStringExtra("birthdate")
@@ -28,32 +41,58 @@ class NoteProfileChangeActivity : AppCompatActivity() {
         val comTel = intent.getStringExtra("comTel")
         val comAdr = intent.getStringExtra("comAdr")
         val faxNum = intent.getStringExtra("faxNum")
-
+        val id = intent.getStringExtra("id")
+        Log.d("test",id.toString())
         binding.backKey.setOnClickListener {
             finish()
         }
         binding.request.setOnClickListener {
             binding.request.visibility = View.GONE
             binding.cancellationRequest.visibility = View.VISIBLE
+            val profileDataClass = ProfileDataClass()
+            profileDataClass.birthdate = binding.frBirthDate.text.toString()
+            profileDataClass.check = "X"
+            profileDataClass.comAdr = binding.frComAdr.text.toString()
+            profileDataClass.comPosition = binding.frComPosition.text.toString()
+            profileDataClass.company = binding.frCompany.text.toString()
+            profileDataClass.comTel = comTel.toString()
+            profileDataClass.department = binding.frDepartment.text.toString()
+            profileDataClass.email = binding.frEmail.text.toString()
+            profileDataClass.faxNum = binding.frFaxNum.text.toString()
+            profileDataClass.modifiedDate = formatted.toString()
+            profileDataClass.name = binding.frName.text.toString()
+            profileDataClass.phoneNum = binding.frPhoneNum.text.toString()
+            profileDataClass.pubDate = formatted.toString()
+            profileDataClass.user = id.toString()
+            profileDataClass.year = year.toString()
+            firestore?.collection("teams")?.document("FxRFio9hTwGqAsU5AIZd")?.collection("Profile")
+                ?.document()?.set(profileDataClass)
+            Toast.makeText(this, "문의가 접수 되었습니다", Toast.LENGTH_SHORT).show()
+
 
         }
 
         binding.cancellationRequest.setOnClickListener {
             binding.request.visibility = View.VISIBLE
             binding.cancellationRequest.visibility = View.GONE
+
+
         }
 
-        binding.frYear.text = year
-        binding.frName.text = name
-        binding.frBirthDate.text= birthdate
-        binding.frPhoneNum.text = phoneNum
-        binding.frEmail.text = email
-        binding.frCompany.text = company
-        binding.frDepartment.text = department
-        binding.frComPosition.text = comPosition
-        binding.frComAdr.text = comAdr
-        binding.frFaxNum.text = faxNum
+
+        binding.frYear.text = year.toString()
+        binding.frName.text = name.toString()
+        binding.frBirthDate.setText(birthdate)
+        binding.frPhoneNum.setText(phoneNum)
+        binding.frEmail.setText(email)
+        binding.frCompany.setText(company)
+        binding.frDepartment.setText(department)
+        binding.frComPosition.setText(comPosition)
+        binding.frComAdr.setText(comAdr)
+        binding.frFaxNum.setText(faxNum)
 
 
     }
+
+
 }

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
+import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -17,12 +18,14 @@ import com.example.moilsurok.R
 import com.example.moilsurok.dataClass.UserBookMarkDataClass
 import com.example.moilsurok.dataClass.UserDataClass
 import com.example.moilsurok.databinding.ActivityNoteBinding
+import com.example.moilsurok.databinding.ItemNoteBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import java.security.AccessController.getContext
 
 
 class NoteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNoteBinding
-
+    private lateinit var noteAdapter: NoteAdapter
 
     var firestore: FirebaseFirestore? = null
 
@@ -39,7 +42,11 @@ class NoteActivity : AppCompatActivity() {
         firestore = FirebaseFirestore.getInstance()
 
         val id = intent.getStringExtra("id")
-
+        binding.noteRecyclerView.apply {
+            binding.noteRecyclerView.layoutManager = LinearLayoutManager(context)
+            noteAdapter = NoteAdapter()
+            binding.noteRecyclerView.adapter = noteAdapter
+        }
         binding.noteRecyclerView.adapter = NoteAdapter()
         binding.noteRecyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -65,19 +72,35 @@ class NoteActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.noteRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val lastVisibleItemPosition =
+                    (recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition()
+                val itemTotalCount = recyclerView.adapter!!.itemCount-1
+
+                // 스크롤이 끝에 도달했는지 확인
+
+                if (lastVisibleItemPosition == itemTotalCount){
+                    Toast.makeText(this@NoteActivity, "마지막입니다.", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+        })
+
 
     }
 
-
     inner class NoteAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         var deBookMark: ArrayList<UserBookMarkDataClass> = arrayListOf()
-        var deNote: ArrayList<UserDataClass> = arrayListOf()
+        private val deNote: ArrayList<UserDataClass> = arrayListOf()
         val first =
             firestore
                 ?.collection("teams")
                 ?.document("FxRFio9hTwGqAsU5AIZd")
                 ?.collection("User")
-                ?.whereEqualTo("check","O")
+                ?.whereEqualTo("check", "O")?.limit(10)
 
 
         // firebase data 불러오기
@@ -91,9 +114,46 @@ class NoteActivity : AppCompatActivity() {
                         var item = snapshot.toObject(UserDataClass::class.java)
                         deNote.add(item!!)
 
+
                     }
                     notifyDataSetChanged()
+                    val lastVisible = querySnapshot.documents[querySnapshot.size() - 1]
 
+                    val next = firestore
+                        ?.collection("teams")
+                        ?.document("FxRFio9hTwGqAsU5AIZd")
+                        ?.collection("User")
+                        ?.whereEqualTo("check", "O")?.startAfter(lastVisible)?.limit(10)
+
+//                    binding.noteRecyclerView.addOnScrollListener(object :
+//                        RecyclerView.OnScrollListener() {
+//                        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                            super.onScrolled(recyclerView, dx, dy)
+//
+//                            val lastVisibleItemPosition =
+//                                (recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition()
+//                            val itemTotalCount = recyclerView.adapter!!.itemCount - 1
+//
+//                            // 스크롤이 끝에 도달했는지 확인
+//
+//                            if (lastVisibleItemPosition == itemTotalCount) {
+//                                Toast.makeText(this@NoteActivity, "마지막입니다.", Toast.LENGTH_SHORT)
+//                                    .show()
+//                                next?.addSnapshotListener { querySnapshot, _ ->
+//                                    // ArrayList 비워줌
+//
+//                                    deNote.clear()
+//                                    for (snapshot in querySnapshot!!.documents) {
+//                                        var item = snapshot.toObject(UserDataClass::class.java)
+//                                        deNote.add(item!!)
+//
+//
+//                                    }
+//                                    notifyDataSetChanged()
+//                                }
+//                            }
+//                        }
+//                    })
                 }
 
 
@@ -121,13 +181,6 @@ class NoteActivity : AppCompatActivity() {
             holder.company.text = user.company
             holder.year.text = user.year
             holder.comPosition.text = user.comPosition
-
-
-
-
-
-
-
 
             holder.itemView.setOnClickListener {
                 val intent = Intent(holder.itemView.context, NoteProfileDetailActivity::class.java)
@@ -165,7 +218,18 @@ class NoteActivity : AppCompatActivity() {
             val check: CheckBox = itemView.findViewById(R.id.bookmark)
 
 
+        }
 
+        inner class NoteItemViewHolder(private val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root){
+            fun bind(userItem: UserDataClass, userStatus: UserBookMarkDataClass) = with(binding){
+
+                bookmark.isChecked = userStatus.isChecked
+
+                bookmark.setOnClickListener {
+                    userStatus.isChecked = bookmark.isChecked
+                    notifyItemChanged(adapterPosition)
+                }
+            }
         }
 
     }

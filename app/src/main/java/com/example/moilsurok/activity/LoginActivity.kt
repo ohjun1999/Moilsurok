@@ -66,8 +66,10 @@ class LoginActivity : AppCompatActivity() {
             .get()
             //IF문 사용해서 빈값을 받아왔을 때 실패 메시지 document를 받아왔을 때 액티비티 이동
             .addOnSuccessListener { documents ->
+
+
                 for (document in documents) {
-                    id = document.getString(document.id).toString()
+                    id = document.id
                     name = document.getString("name").toString()
                     company = document.getString("company").toString()
                     year = document.getString("year").toString()
@@ -95,7 +97,7 @@ class LoginActivity : AppCompatActivity() {
                     intent.putExtra("comTel", comTel)
                     intent.putExtra("comAdr", comAdr)
                     intent.putExtra("faxNum", faxNum)
-                    intent.putExtra(document.id, id)
+                    intent.putExtra("id", id)
                     startActivity(intent)
 
                     finish()

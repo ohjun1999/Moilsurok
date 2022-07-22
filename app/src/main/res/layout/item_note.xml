@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="108dp"
     android:layout_marginTop="20dp"
     android:background="?attr/selectableItemBackground"
-    android:orientation="horizontal">
+    android:orientation="horizontal" >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/noteCard"
@@ -18,17 +18,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="14" />
+
 
             <ImageView
                 android:id="@+id/noteImage"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
                 android:layout_weight="60"
                 android:src="@color/backGray" />
 

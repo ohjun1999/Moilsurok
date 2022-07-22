@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("comTel", comTel)
             intent.putExtra("comAdr", comAdr)
             intent.putExtra("faxNum", faxNum)
+            intent.putExtra("id",id)
             startActivity(intent)
         }
         binding.goNote.setOnClickListener {

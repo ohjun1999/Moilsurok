@@ -12,6 +12,7 @@ data class UserDataClass(
     val comPosition: String? = "comPosition",
     val comTel: String? = "comTel",
     val comAdr: String? = "comAdr",
-    val faxNum: String? = "faxNum"
+    val faxNum: String? = "faxNum",
+    val image: String? = "files"
 
 )

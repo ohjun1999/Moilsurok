@@ -27,6 +27,7 @@ class ExtraActivity : AppCompatActivity() {
         val comTel = intent.getStringExtra("comTel")
         val comAdr = intent.getStringExtra("comAdr")
         val faxNum = intent.getStringExtra("faxNum")
+        val id = intent.getStringExtra("id")
 
         // 접근 가능
         binding.goAlarmSetting.setOnClickListener {
@@ -51,6 +52,7 @@ class ExtraActivity : AppCompatActivity() {
             intent.putExtra("comTel", comTel)
             intent.putExtra("comAdr", comAdr)
             intent.putExtra("faxNum", faxNum)
+            intent.putExtra("id",id)
             startActivity(intent)
         }
         binding.goTerms.setOnClickListener {

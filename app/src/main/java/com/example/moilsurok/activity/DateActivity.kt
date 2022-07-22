@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moilsurok.*
@@ -28,67 +30,10 @@ import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-data class Event(val date: LocalDate)
+data class Event(val id: String, val text: String, val date: LocalDate)
 
-class Example3EventsAdapter(val onClick: (Event) -> Unit) :
-    RecyclerView.Adapter<Example3EventsAdapter.Example3EventsViewHolder>() {
-    val db = Firebase.firestore
-    private val titleFormatter = DateTimeFormatter.ofPattern("yyyy")
-    val events = mutableListOf<Event>()
-    val second =
-        db
-            .collection("teams")
-            .document("FxRFio9hTwGqAsU5AIZd")
-            .collection("Schedule")
-            .whereGreaterThanOrEqualTo("date", titleFormatter.toString())
-            .whereLessThanOrEqualTo("date", titleFormatter.toString() + "\uF7FF")
-
-
-    // firebase data 불러오기
-    init {
-        second.get().addOnSuccessListener {
-            events.clear()
-        }.addOnFailureListener {
-
-        }
-        notifyDataSetChanged()
-    }
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Example3EventsViewHolder {
-        return Example3EventsViewHolder(
-            Example3EventItemViewBinding.inflate(parent.context.layoutInflater, parent, false)
-        )
-    }
-
-    override fun onBindViewHolder(viewHolder: Example3EventsViewHolder, position: Int) {
-        viewHolder.bind(events[position])
-    }
-
-    override fun getItemCount(): Int = events.size
-
-    inner class Example3EventsViewHolder(private val binding: Example3EventItemViewBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        init {
-            itemView.setOnClickListener {
-                onClick(events[bindingAdapterPosition])
-            }
-        }
-        fun bind(event: Event) {
-
-        }
-
-    }
-}
 
 class DateActivity : AppCompatActivity() {
-    private val eventsAdapter = Example3EventsAdapter {
-        AlertDialog.Builder(this)
-            .setMessage(R.string.example_3_dialog_delete_confirmation)
-            .setNegativeButton(R.string.close, null)
-            .show()
-    }
 
     private lateinit var binding: ActivityDateBinding
 
@@ -99,7 +44,7 @@ class DateActivity : AppCompatActivity() {
     private val titleFormatter = DateTimeFormatter.ofPattern("yyyy")
     private val selectionFormatter = DateTimeFormatter.ofPattern("MM월의 일정")
     private val selectionDateFormatter = DateTimeFormatter.ofPattern("MM월 dd일의 일정")
-    private val events = mutableMapOf<LocalDate, List<Event>>()
+    private val events = mutableMapOf<LocalDate, List<com.example.moilsurok.activity.Event>>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // binding class 인스턴스 생성
@@ -186,6 +131,10 @@ class DateActivity : AppCompatActivity() {
                             dotView.isVisible = events[day.date].orEmpty().isNotEmpty()
                         }
                     }
+                } else if (textView == events[day.date]) {
+                    textView.setTextColorRes(R.color.example_3_black)
+                    textView.background = null
+                    dotView.makeVisible()
                 } else {
                     textView.makeInVisible()
                     dotView.makeInVisible()
@@ -228,12 +177,44 @@ class DateActivity : AppCompatActivity() {
     }
 
 
+
+
     private fun updateAdapterForDate(date: LocalDate) {
-        eventsAdapter.apply {
-            events.clear()
-//            events.addAll(this.events[date].orEmpty())
-            notifyDataSetChanged()
-        }
+        val db = Firebase.firestore
+        var deEvent: ArrayList<EventDataClass> = arrayListOf()
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM")
+        val formatted = selectedDate.toString().format(formatter)
+
+
+        val first =
+            db
+                .collection("teams")
+                .document("FxRFio9hTwGqAsU5AIZd")
+                .collection("Schedule")
+                .whereGreaterThanOrEqualTo("date", formatted)
+                .whereLessThanOrEqualTo("date", formatted + "\uF7FF")
+
+
+        // firebase data 불러오기
+
+
+        first
+
+            .addSnapshotListener { querySnapshot, _ ->
+                // ArrayList 비워줌
+
+                deEvent.clear()
+
+                for (snapshot in querySnapshot!!.documents) {
+                    var item = snapshot.toObject(EventDataClass::class.java)
+                    deEvent.add(item!!)
+                    Log.d("test", formatted)
+                }
+
+
+            }
+
+
         binding.exThreeSelectedDateText.text = selectionFormatter.format(date)
         binding.exOneYearText.text = titleFormatter.format(date)
         binding.exOneMonthText.text = titleSameYearFormatter.format(date)
@@ -248,28 +229,6 @@ class DateActivity : AppCompatActivity() {
         var deSchedule: ArrayList<ScheduleDataClass> = arrayListOf()
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM")
         val formatted = selectedDate.toString().format(formatter)
-
-        private fun selectDate(date: LocalDate) {
-            if (selectedDate != date) {
-                val oldDate = selectedDate
-                selectedDate = date
-                oldDate?.let { binding.exThreeCalendar.notifyDateChanged(it) }
-                binding.exThreeCalendar.notifyDateChanged(date)
-                updateAdapterForDate(date)
-            }
-        }
-
-        private fun updateAdapterForDate(date: LocalDate) {
-            eventsAdapter.apply {
-                events.clear()
-                notifyDataSetChanged()
-            }
-            binding.exThreeSelectedDateText.text = selectionFormatter.format(date)
-            binding.exOneYearText.text = titleFormatter.format(date)
-            binding.exOneMonthText.text = titleSameYearFormatter.format(date)
-            binding.selectedDate.text = selectionDateFormatter.format(date)
-
-        }
 
 
         val first =
@@ -346,6 +305,7 @@ class DateActivity : AppCompatActivity() {
 
 
     }
+
 
     inner class selectDateScheduleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -427,38 +387,6 @@ class DateActivity : AppCompatActivity() {
         }
 
 
-    }
-
-    inner class EventsAdapter(val onClick: (EventDataClass) -> Unit) :
-        RecyclerView.Adapter<EventsAdapter.EventsViewHolder>() {
-
-        val events = mutableListOf<EventDataClass>()
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsViewHolder {
-            return EventsViewHolder(
-                Example3EventItemViewBinding.inflate(parent.context.layoutInflater, parent, false)
-            )
-        }
-
-        override fun onBindViewHolder(viewHolder: EventsViewHolder, position: Int) {
-            viewHolder.bind(events[position])
-        }
-
-        override fun getItemCount(): Int = events.size
-
-        inner class EventsViewHolder(private val binding: Example3EventItemViewBinding) :
-            RecyclerView.ViewHolder(binding.root) {
-
-            init {
-                itemView.setOnClickListener {
-                    onClick(events[bindingAdapterPosition])
-                }
-            }
-
-            fun bind(event: EventDataClass) {
-
-            }
-        }
     }
 
 

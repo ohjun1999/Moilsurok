@@ -153,7 +153,9 @@
                     android:text="생년월일"
                     android:textSize="12sp" />
 
-                <TextView
+                <EditText
+                    android:selectAllOnFocus="true"
+                    android:background="@color/white"
                     android:id="@+id/frBirthDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -161,7 +163,6 @@
                     android:gravity="center_vertical"
                     android:paddingStart="10dp"
                     android:paddingBottom="8dp"
-                    android:text="2000.04.25"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -174,7 +175,9 @@
                     android:text="휴대전화"
                     android:textSize="12sp" />
 
-                <TextView
+                <EditText
+                    android:selectAllOnFocus="true"
+                    android:background="@color/white"
                     android:id="@+id/frPhoneNum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -182,7 +185,6 @@
                     android:gravity="center_vertical"
                     android:paddingStart="10dp"
                     android:paddingBottom="8dp"
-                    android:text="010-5745-1727"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -196,7 +198,9 @@
                     android:textSize="12sp" />
 
 
-                <TextView
+                <EditText
+                    android:selectAllOnFocus="true"
+                    android:background="@color/white"
                     android:id="@+id/frEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -206,7 +210,6 @@
                     android:paddingBottom="8dp"
                     android:scrollHorizontally="true"
                     android:singleLine="true"
-                    android:text="wonbinchoi0425@gmail.com"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -216,10 +219,12 @@
                     android:layout_weight="1"
                     android:paddingStart="10dp"
                     android:paddingTop="8dp"
-                    android:text="이메일"
+                    android:text="FAX번호"
                     android:textSize="12sp" />
 
-                <TextView
+                <EditText
+                    android:selectAllOnFocus="true"
+                    android:background="@color/white"
                     android:id="@+id/frFaxNum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -227,11 +232,11 @@
                     android:gravity="center_vertical"
                     android:paddingStart="10dp"
                     android:paddingBottom="8dp"
-                    android:text="1234567"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
                 <TextView
+                    android:selectAllOnFocus="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -241,7 +246,9 @@
                     android:textSize="12sp" />
 
 
-                <TextView
+                <EditText
+                    android:selectAllOnFocus="true"
+                    android:background="@color/white"
                     android:id="@+id/frCompany"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -249,7 +256,6 @@
                     android:gravity="center_vertical"
                     android:paddingStart="10dp"
                     android:paddingBottom="8dp"
-                    android:text="LINK"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -264,7 +270,9 @@
                     android:textSize="12sp" />
 
 
-                <TextView
+                <EditText
+                    android:selectAllOnFocus="true"
+                    android:background="@color/white"
                     android:id="@+id/frDepartment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -272,7 +280,6 @@
                     android:gravity="center_vertical"
                     android:paddingStart="10dp"
                     android:paddingBottom="8dp"
-                    android:text="제품개발부서(디자인)"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -287,7 +294,9 @@
                     android:textSize="12sp" />
 
 
-                <TextView
+                <EditText
+                    android:selectAllOnFocus="true"
+                    android:background="@color/white"
                     android:id="@+id/frComPosition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -295,7 +304,6 @@
                     android:gravity="center_vertical"
                     android:paddingStart="10dp"
                     android:paddingBottom="8dp"
-                    android:text="팀장"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -310,7 +318,9 @@
                     android:textSize="12sp" />
 
 
-                <TextView
+                <EditText
+                    android:selectAllOnFocus="true"
+                    android:background="@color/white"
                     android:id="@+id/frComAdr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -318,31 +328,10 @@
                     android:gravity="center_vertical"
                     android:paddingStart="10dp"
                     android:paddingBottom="8dp"
-                    android:text="경기도 수원시 권선구"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="10dp"
-                    android:paddingTop="8dp"
-                    android:text="회사 홈페이지"
-                    android:textSize="12sp" />
 
-
-                <TextView
-                    android:id="@+id/frCompanyWeb"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="15"
-                    android:gravity="center_vertical"
-                    android:paddingStart="10dp"
-                    android:paddingBottom="8dp"
-                    android:text="https://www.hanaw.com/"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
             </LinearLayout>
 
 
